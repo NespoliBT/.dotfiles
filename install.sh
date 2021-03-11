@@ -69,7 +69,7 @@ function newMachine {
 
   read partition
 
-  while [ $partition -gt $numberOfPartitions ]
+  while ! [[ $partition == ?(-)+([0-9]) ]] || [ $partition -gt $numberOfPartitions ]
   do
     echo -e "${yellow}Please select a partition:${clear}"
     read partition
@@ -84,10 +84,43 @@ function newMachine {
     mkdir /mnt/newinstall
   fi
 
+
+  divisor;
+
+  echo -e "Enter an hostname: "
+  read hostname
+
+  divisor;
+
+  echo -e "Enter an root password: "
+  read rootPassword
+
+  divisor;
+
   sudo mount /dev/${selectedPartition} /mnt/newinstall
   echo -e "${green}Partition mounted!${clear}"
 
-  pacstrap -i /mnt/newinstall base base-devel git nano --noconfirm
+  pacstrap -i /mnt/newinstall base base-devel --noconfirm
+
+arch-chroot /mnt /bin/bash <<EOF
+  echo "Setting and generating locale"
+  echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
+  locale-gen
+  export LANG=en_US.UTF-8
+  echo "LANG=en_US.UTF-8" >> /etc/locale.conf
+  echo "Setting time zone"
+  ln -s /usr/share/zoneinfo/Europe/Rome /etc/localtime
+  echo "Setting hostname"
+  echo $hostname > /etc/hostname
+  sed -i "/localhost/s/$/ $hostname/" /etc/hosts
+  echo "Installing wifi packages"
+  pacman --noconfirm -S iw wpa_supplicant dialog wpa_actiond
+
+  echo "Setting root password"
+  echo "root:${rootPassword}" | chpasswd
+EOF
+
+
 }
 
 function currentMachine {
