@@ -102,7 +102,7 @@ function newMachine {
 
   pacstrap -i /mnt/newinstall base base-devel --noconfirm
 
-arch-chroot /mnt /bin/bash <<EOF
+arch-chroot /mnt/newinstall /bin/bash <<EOF
   echo "Setting and generating locale"
   echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
   locale-gen
