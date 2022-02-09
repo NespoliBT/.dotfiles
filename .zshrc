@@ -24,11 +24,19 @@ antigen bundle z # Jump around dirs
 
 antigen bundle zsh-users/zsh-syntax-highlighting # Fish like highlight
 
+# Theme
 source /Users/davide.nespoli/.oh-my-zsh/themes/headline.zsh-theme
 
 antigen apply
 
+# Exports
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
+
 export NVM_DIR="$HOME/.nvm"
+export GEM_HOME="$HOME/.gem"
+
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 clear&&pfetch
