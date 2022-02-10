@@ -26,7 +26,8 @@ yayPackages = [
     'visual-studio-code-bin',
     'docker',
     'python',
-    'pfetch'
+    'pfetch',
+    'inetutils'
 ]
 
 $columns = `tput cols`.to_i
@@ -83,7 +84,7 @@ when $os.include?('Darwin')
 
 when $os.include?('Linux')
     puts "Detected OS: Linux".green
-    puts "This is arch, right?! [Y/n]".yellow
+    puts "This is arch, right?! [Y/n]".blue
     
     answer = gets.chomp
 
@@ -92,7 +93,7 @@ when $os.include?('Linux')
         exit
     end
 
-    system('pacman -S sudo --noconfirm')
+    system('pacman -S sudo inetutils --noconfirm')
 
     # Enable wheel group as super users
     data = File.read("/etc/sudoers") 
@@ -114,17 +115,17 @@ when $os.include?('Linux')
     puts
     puts $divider.pink
 
-    puts("Enter username: [Enter to skip]")
+    puts("Enter username: [Enter to skip]".blue)
     username = gets.chomp
 
     if(username.length > 0)
         system("useradd -m -G wheel #{username}")
 
-        puts("Enter #{username}'s password:")
+        puts("Enter #{username}'s password:".blue)
         system("passwd #{username}")
     end
 
-    puts "Installing yay"
+    puts "Installing yay".blue
 
     # ? Doing stuff as user
     system("
@@ -159,13 +160,13 @@ when $os.include?('Linux')
 
             # ? configs
             rm ~/.zshrc
-            rm ~/.zshrc.pre-oh-my-zsh
+            cp ~/.dotfiles/.oh-my-zsh/themes/headline.zsh-theme ~/.oh-my-zsh/themes/
             ln -s ~/.dotfiles/.zshrc ~/.zshrc
             ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
             ln -s ~/.dotfiles/.vimrc ~/.vimrc
+            ln -s ~/.dotfiles/antigen.zsh ~/antigen.zsh
 
-            cd
-
+            source ~/.zshrc
         '
     ")
     system("chsh -s /bin/zsh #{username}")
