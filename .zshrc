@@ -25,7 +25,7 @@ antigen bundle z # Jump around dirs
 antigen bundle zsh-users/zsh-syntax-highlighting # Fish like highlight
 
 # Theme
-source /Users/davide.nespoli/.oh-my-zsh/themes/headline.zsh-theme
+source "$HOME/.oh-my-zsh/themes/headline.zsh-theme"
 
 antigen apply
 
