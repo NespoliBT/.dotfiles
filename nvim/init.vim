@@ -5,6 +5,8 @@ set wildmenu
 set number
 set encoding=UTF-8
 
+let g:blamer_enabled = 1
+
 call plug#begin()
 	Plug 'preservim/nerdtree'
 	Plug 'neovim/nvim-lspconfig'
@@ -13,6 +15,7 @@ call plug#begin()
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 	Plug 'nvim-lua/completion-nvim'
 	Plug 'ryanoasis/vim-devicons'
+	Plug 'APZelos/blamer.nvim'
 call plug#end()
 
 nnoremap <leader>n :NERDTreeFocus<CR>
