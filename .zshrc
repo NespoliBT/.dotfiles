@@ -25,7 +25,7 @@ antigen bundle z # Jump around dirs
 antigen bundle zsh-users/zsh-syntax-highlighting # Fish like highlight
 
 # Theme
-antigen theme af-magic
+antigen theme af-magic 
 
 antigen apply
 
@@ -39,4 +39,18 @@ export GEM_HOME="$HOME/.gem"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-clear&&pfetch
+clear
+# pokemon-colorscripts -n shaymin
+GITDIR="./.git/"
+if [ -d "$GITDIR" ]; then
+  onefetch
+else
+  pfetch
+fi
+
+# Aliases
+alias ls="exa --icons"
+alias cat="bat"
+
+export PATH="/usr/local/opt/php@7.4/bin:$PATH"
+export PATH="/usr/local/opt/php@7.4/sbin:$PATH"
