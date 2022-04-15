@@ -28,6 +28,8 @@ yayPackages = [
     'python',
     'pfetch',
     'inetutils'
+    'exa'
+    'bat'
 ]
 
 $columns = `tput cols`.to_i
