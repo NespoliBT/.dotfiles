@@ -39,8 +39,13 @@ export GEM_HOME="$HOME/.gem"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+COLORSCHEMEDIR="$HOME/.cache/wal/"
+if [ -d "$COLORSCHEMEDIR" ]; then
+  cat "$COLORSCHEMEDIR/sequences"  
+fi
+
 clear
-# pokemon-colorscripts -n shaymin
+
 GITDIR="./.git/"
 if [ -d "$GITDIR" ]; then
   onefetch

@@ -16,6 +16,9 @@ call plug#begin()
 	Plug 'nvim-lua/completion-nvim'
 	Plug 'ryanoasis/vim-devicons'
 	Plug 'APZelos/blamer.nvim'
+	Plug 'ellisonleao/glow.nvim', {'branch': 'main'}
+	Plug 'romgrk/barbar.nvim'
+	Plug 'kyazdani42/nvim-web-devicons'
 call plug#end()
 
 nnoremap <leader>n :NERDTreeFocus<CR>
@@ -26,4 +29,3 @@ nnoremap <C-f> :NERDTreeFind<CR>
 source ~/.config/nvim/plug-config/lsp.lua
 source ~/.config/nvim/plug-config/autoformat.vim
 source ~/.config/nvim/plug-config/treesitter.lua
-
