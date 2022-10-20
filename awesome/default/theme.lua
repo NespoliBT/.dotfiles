@@ -11,23 +11,34 @@ local themes_path = gfs.get_configuration_dir()
 
 local theme = {}
 
-theme.font = "JetBrainsMono Nerd Font Mono 16"
+-- $color_1: #1b2128;
+-- $color_2: #212931;
+-- $color_3: #dd83a0;
+-- $color_4: #63aec0;
+-- $color_5: #e25987;
+-- $color_6: #85ba86;
+-- $color_7: #b877b4;
+-- $color_8: #fec262;
+-- $color_9: #e5e5e5;
 
-theme.bg_normal = "#343954"
-theme.bg_focus = "#56607c"
-theme.bg_urgent = "#e39284"
+theme.font_small = "JetBrainsMono Nerd Font Mono 14"
+theme.font = "JetBrainsMono Nerd Font Mono 24"
+
+theme.bg_normal = "#212931"
+theme.bg_focus = "#85ba86"
+theme.bg_urgent = "#e25987"
 theme.bg_minimize = "#181e30"
 theme.bg_systray = theme.bg_normal
 
 theme.fg_normal = "#aaaaaa"
-theme.fg_focus = "#ffffff"
+theme.fg_focus = "#1b2128"
 theme.fg_urgent = "#ffffff"
 theme.fg_minimize = "#ffffff"
 
-theme.useless_gap = dpi(0)
-theme.border_width = dpi(1)
+theme.useless_gap = dpi(10)
+theme.border_width = dpi(5)
 theme.border_color_normal = "#000000"
-theme.border_color_active = "#535d6c"
+theme.border_color_active = "#b877b4"
 theme.border_color_marked = "#91231c"
 
 -- There are other variable sets
@@ -53,6 +64,9 @@ theme.border_color_marked = "#91231c"
 -- menu_[border_color|border_width]
 theme.menu_submenu_icon = themes_path .. "default/submenu.png"
 theme.menu_height = dpi(15)
+
+theme.wibar_height = dpi(60)
+
 theme.menu_width = dpi(100)
 
 theme.wallpaper = themes_path .. "default/background.png"
