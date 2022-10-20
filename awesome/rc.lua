@@ -1,4 +1,4 @@
--- Standard awesome library
+-- Standard awesome libraries
 local gears = require("gears")
 local awful = require("awful")
 local wibox = require("wibox")
@@ -7,45 +7,23 @@ local naughty = require("naughty")
 local ruled = require("ruled")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
+local battery = require("components.battery")
+local taglist = require("components.taglist")
+local systray = require("components.systray")
+local theme = require("default.theme")
 
 require("awful.autofocus")
 require("awful.hotkeys_popup.keys")
 
--- {{{ Variable definitions
--- Themes define colours, icons, font and wallpapers.
--- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 beautiful.init(gears.filesystem.get_configuration_dir() .. 'default/theme.lua')
 
--- This is used later as the default terminal and editor to run.
+-- Variable definitions
 terminal = "termite"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
--- Usually, Mod4 is the key with a logo between Control and Alt.
--- If you do not like this or do not have such a key,
--- I suggest you to remap Mod4 to another key using xmodmap or other tools.
--- However, you can use another modifier like Mod1, but it may interact with others.
 modkey = "Mod4"
--- }}}
-
--- {{{ Menu
--- Create a launcher widget and a main menu
-myawesomemenu = {{"hotkeys", function()
-    hotkeys_popup.show_help(nil, awful.screen.focused())
-end}, {"manual", terminal .. " -e man awesome"}, {"edit config", editor_cmd .. " " .. awesome.conffile},
-                 {"restart", awesome.restart}, {"quit", function()
-    awesome.quit()
-end}}
-
-mymainmenu = awful.menu({
-    items = {{"awesome", myawesomemenu, beautiful.awesome_icon}, {"open terminal", terminal}}
-})
-
-mylauncher = awful.widget.launcher({
-    image = beautiful.awesome_icon,
-    menu = mymainmenu
-})
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
@@ -61,53 +39,39 @@ end)
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
 
--- Create a textclock widget
-mytextclock = wibox.widget.textclock()
-
 screen.connect_signal("request::desktop_decoration", function(s)
+    SCREEN_WIDTH = s.geometry.width
+    SCREEN_HEIGHT = s.geometry.height
+    barOrientation = SCREEN_WIDTH > 2200 and wibox.layout.fixed.vertical or wibox.layout.fixed.horizontal
+    barAlignment = SCREEN_WIDTH > 2200 and wibox.layout.align.vertical or wibox.layout.align.horizontal
+    barPosition = SCREEN_WIDTH > 2200 and "left" or "top"
+
     -- Each screen has its own tag table.
     awful.tag({"", "", "", "切", "", ""}, s, awful.layout.layouts[1])
 
-    -- Create a promptbox for each screen
-    s.mypromptbox = awful.widget.prompt()
+    s.battery = battery
 
     -- Create a taglist widget
-    s.mytaglist = awful.widget.taglist {
-        screen = s,
-        filter = awful.widget.taglist.filter.all,
-        widget_template = {
-            {
-                {
-                    {
-                        id = 'text_role',
-                        widget = wibox.widget.textbox
-                    },
-                    layout = wibox.layout.flex.horizontal
-                },
-                left = 12,
-                right = 12,
-                widget = wibox.container.margin
-            },
-            id = 'background_role',
-            widget = wibox.container.background
-        }
-    }
+    s.mytaglist = taglist.init(s, barOrientation)
+
+    s.systray = systray.init()
 
     -- Create the wibox
     s.mywibox = awful.wibar {
-        position = "top",
+        position = barPosition,
         screen = s,
         widget = {
-            layout = wibox.layout.align.horizontal,
+            layout = barAlignment,
             { -- Left widgets
                 layout = wibox.layout.fixed.horizontal,
                 s.mytaglist
             },
-            s.mytasklist, -- Middle widget
+            wibox.widget.systray(),
             { -- Right widgets
-                layout = wibox.layout.fixed.horizontal,
-                wibox.widget.systray(),
-                mytextclock
+                layout = wibox.layout.align.horizontal,
+                s.battery,
+                s.systray,
+                wibox.widget.textclock("%H:%M ")
             }
         }
     }
@@ -123,47 +87,34 @@ end), awful.button({}, 4, awful.tag.viewprev), awful.button({}, 5, awful.tag.vie
 -- {{{ Key bindings
 
 -- General Awesome keys
-awful.keyboard.append_global_keybindings({
-    awful.key({modkey}, "s", hotkeys_popup.show_help, {
-        description = "show help",
-        group = "awesome"
-    }),
-
-    awful.key({modkey}, "w", function()
-        mymainmenu:show()
-    end, {
-        description = "show main menu",
-        group = "awesome"
-    }),
-
-    awful.key({modkey, "Control"}, "r", awesome.restart, {
-        description = "reload awesome",
-        group = "awesome"
-    }),
-
-    awful.key({modkey}, "Return", function()
-        awful.spawn(terminal)
-    end, {
-        description = "open a terminal",
-        group = "launcher"
-    }),
-
-    awful.key({modkey}, "r", function()
-        awful.screen.focused().mypromptbox:run()
-    end, {
-        description = "run prompt",
-        group = "launcher"
-    }),
-
-    awful.key({modkey}, "space", function()
-        awful.spawn.easy_async_with_shell("rofi -show drun", function(stdout)
-            awful.spawn(stdout:gsub("\n$", ""))
-        end)
-    end, {
-        description = "run rofi",
-        group = "launcher"
-    })
-})
+awful.keyboard.append_global_keybindings({awful.key({modkey}, "s", hotkeys_popup.show_help, {
+    description = "show help",
+    group = "awesome"
+}), awful.key({modkey, "Control"}, "r", awesome.restart, {
+    description = "reload awesome",
+    group = "awesome"
+}), awful.key({modkey}, "Return", function()
+    awful.spawn(terminal)
+end, {
+    description = "open a terminal",
+    group = "launcher"
+}), awful.key({modkey}, "r", function()
+    awful.screen.focused().mypromptbox:run()
+end, {
+    description = "run prompt",
+    group = "launcher"
+}), awful.key({modkey}, "space", function()
+    awful.spawn.with_shell("rofi -show drun", function(stdout)
+        awful.spawn(stdout:gsub("\n$", ""))
+    end)
+end, {
+    description = "run rofi",
+    group = "launcher"
+}), awful.key({}, "XF86MonBrightnessDown", function()
+    awful.util.spawn("sudo ybacklight -15")
+end), awful.key({}, "XF86MonBrightnessUp", function()
+    awful.util.spawn("sudo ybacklight +15")
+end)})
 
 -- Tags related keybindings
 awful.keyboard.append_global_keybindings({awful.key({modkey}, "Left", awful.tag.viewprev, {
@@ -369,7 +320,19 @@ client.connect_signal("request::default_keybindings", function()
     end, {
         description = "close",
         group = "client"
-    }), awful.key({modkey, "Control"}, "space", awful.client.floating.toggle, {
+    }), awful.key({}, "XF86AudioRaiseVolume", function()
+        awful.util.spawn("amixer set Master 9%+")
+    end), awful.key({}, "XF86AudioLowerVolume", function()
+        awful.util.spawn("amixer set Master 9%-")
+    end), awful.key({}, "XF86AudioMute", function()
+        awful.util.spawn("amixer sset Master toggle")
+    end), awful.key({modkey}, ";", function()
+        awful.util.spawn("playerctl previous")
+    end), awful.key({modkey}, "'", function()
+        awful.util.spawn("playerctl play-pause")
+    end), awful.key({modkey}, "\\", function()
+        awful.util.spawn("playerctl next")
+    end), awful.key({modkey, "Control"}, "space", awful.client.floating.toggle, {
         description = "toggle floating",
         group = "client"
     }), awful.key({modkey, "Control"}, "Return", function(c)
@@ -452,12 +415,6 @@ ruled.client.connect_signal("request::rules", function()
             floating = true
         }
     }
-
-    -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- ruled.client.append_rule {
-    --     rule       = { class = "Firefox"     },
-    --     properties = { screen = 1, tag = "2" }
-    -- }
 end)
 
 -- }}}
@@ -491,11 +448,15 @@ client.connect_signal("mouse::enter", function(c)
 end)
 
 -- Enable tap of touchpad
-awful.spawn.easy_async_with_shell(
-    'xinput set-prop "$(xinput list --name-only | grep -i touch)" "libinput Tapping Enabled" 1')
+awful.spawn.with_shell('xinput set-prop "$(xinput list --name-only | grep -i touch)" "libinput Tapping Enabled" 1')
 
 -- Set wallpaper
-awful.spawn.easy_async_with_shell('feh --bg-fill ' .. os.getenv('HOME') .. '/.config/awesome/default/background.png')
+awful.spawn.with_shell('feh --bg-fill ' .. os.getenv('HOME') .. '/.config/awesome/default/background.png')
 
 -- Open Network Manager Applet
-awful.spawn.easy_async_with_shell('nm-applet')
+awful.spawn.with_shell('nm-applet')
+-- Open Bluetooth Managet Applet
+awful.spawn.with_shell('blueman-applet')
+
+-- Run picom
+awful.spawn.with_shell('picom --config .dotfiles/picom.conf')
