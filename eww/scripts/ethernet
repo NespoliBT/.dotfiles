@@ -1,0 +1,5 @@
+#!/bin/bash
+
+status="$(cat "/sys/class/net/wlan0/operstate")"
+
+echo "󰈀 $status" && exit

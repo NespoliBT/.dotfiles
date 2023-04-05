@@ -1,0 +1,63 @@
+(include "./def/poll.yuck")
+
+(defwindow bar
+	:monitor 0
+	:geometry (geometry 
+			:width "100%" 
+			:halign "center"
+			:anchor "top center"
+			)
+	:exclusive true
+
+    (box
+		:class "container"
+		
+		(centerbox
+			:class "bar"
+			
+			(box
+				:class "left"
+				:halign "start"
+				
+				(box
+					:class "battery"
+					:space-evenly true
+					
+					(label
+						:class "icon"
+						:text battery-status
+						:halign "end"
+					)
+					(label
+						:class "text"
+						:text battery
+						:halign "start"
+					)
+				)
+				(scale
+					:class "brightness"
+					:min 0
+					:max 254
+					:value brightness
+					:onchange "brightnessctl s {}"
+				)
+				(scale
+					:class "volume"
+					:min 0
+					:max 100
+					:value volume
+					:onchange "wpctl set-volume @DEFAULT_SINK@ {}%"
+				)
+			)
+			(label
+				:class "center"
+				:text sentence
+			)
+			(label
+				:class "right"
+				:halign "end"
+				:text time
+			)
+		)
+	)
+)

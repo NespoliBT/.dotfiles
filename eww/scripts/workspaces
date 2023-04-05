@@ -1,0 +1,12 @@
+#!/bin/bash
+
+workspaces=`hyprctl workspaces | grep ID | sed 's/()/(1)/g' | awk 'NR>1{print $1}' RS='(' FS=')'`
+active_workspace=`hyprctl monitors | grep active | sed 's/()/(1)/g' | awk 'NR>1{print $1}' RS='(' FS=')'`
+
+# cycle through workspaces and print the active one
+for workspace in $workspaces; do
+    if [ "$workspace" = "$active_workspace" ]; then
+        echo "(label\ text:\"asd\")"
+        exit
+    fi
+done

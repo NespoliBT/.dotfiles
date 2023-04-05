@@ -1,3 +1,5 @@
 # NespoliBT's dotfiles
 
-These are NespoliBT's dotfiles.
+## Screenshot
+
+![Screenshot](./images/screenshot.png)

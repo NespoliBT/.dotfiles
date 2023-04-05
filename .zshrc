@@ -36,6 +36,9 @@ export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 export GEM_HOME="$HOME/.gem"
 
+export TERM=xterm
+
+
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 

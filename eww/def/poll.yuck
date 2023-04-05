@@ -1,0 +1,29 @@
+(defpoll time :interval "20s"
+	`date +"%d %B - %H:%M"`)
+
+(defpoll battery :interval "3s"
+	`/home/$USER/.config/eww/scripts/battery`)
+
+(defpoll battery-status :interval "1s"
+    `/home/$USER/.config/eww/scripts/battery-status`)
+
+(defpoll wifi :interval "3s"
+        `/home/$USER/.config/eww/scripts/wifi`)
+
+(defpoll eth :interval "3s"
+        `/home/$USER/.config/eww/scripts/ethernet`)
+
+(defpoll brightness :interval "1s"
+    "cat /sys/class/backlight/amdgpu_bl0/brightness")
+
+(defpoll volume :interval "1s"
+    `/home/$USER/.config/eww/scripts/volume`)
+
+(defpoll mic :interval "1s"
+    `/home/$USER/.config/eww/scripts/mic-volume`)
+
+(defpoll sentence :interval "30m"
+    `/home/$USER/.config/eww/scripts/sentence`)
+
+(defpoll currentTODO :interval "30s"
+    `/home/$USER/.config/eww/scripts/currentTODO`)

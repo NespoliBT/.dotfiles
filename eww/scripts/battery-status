@@ -1,0 +1,10 @@
+#!/bin/bash
+
+status="$(cat "/sys/class/power_supply/BAT0/status")"
+charging=""
+
+if [ $status = "Charging" ]; then
+    charging="󱐋"
+fi 
+
+echo "󰁹$charging" && exit

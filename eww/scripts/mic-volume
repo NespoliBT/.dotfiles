@@ -1,0 +1,5 @@
+#!/bin/bash
+
+percentage="$(pactl get-source-volume @DEFAULT_SOURCE@ | grep -Po '\d+(?=%)' | head -n 1)"
+
+echo " $percentage%" && exit
