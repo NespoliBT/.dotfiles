@@ -2,5 +2,5 @@
 
 network=$(iwctl station wlan0 show | grep network | sed 's/.*network\ \ \ \ //' | sed 's/  //g')
 
-echo "$network"
+echo "$network"
 exit

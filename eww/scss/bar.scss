@@ -1,0 +1,121 @@
+@import "./main.scss";
+
+.container {
+	.bar {
+		margin: 16px 24px;
+		margin-bottom: 0;
+
+		.left,
+		.center,
+		.right {
+			background-color: $color_1;
+			border-radius: 50px;
+		}
+
+		.left {
+			padding-right: 14px;
+			.battery {
+				padding: 0 24px;
+
+				.icon {
+					font-size: 32px;
+					margin-right: 10px;
+					color: $color_6;
+				}
+
+				.text {
+					color: $color_6;
+					font-weight: bold;
+				}
+			}
+
+			.brightness-container {
+				margin-left: 32px;
+				.icon {
+					font-size: 32px;
+					margin-right: 10px;
+					color: $color_8;
+				}
+
+				.brightness {
+					min-width: 150px;
+
+					trough {
+						background: $color_2;
+						border: 0;
+						border-radius: 16px;
+						min-height: 16px;
+
+						slider {
+							all: unset;
+						}
+
+						highlight {
+							background: $color_8;
+							border: 0;
+							border-radius: 16px;
+						}
+					}
+				}
+			}
+
+			.volume-container {
+				margin-left: 32px;
+				.icon {
+					font-size: 32px;
+					color: $color_7;
+					margin-right: 8px;
+				}
+				.volume {
+					min-width: 150px;
+
+					trough {
+						background: $color_2;
+						border: 0;
+						border-radius: 16px;
+						min-height: 16px;
+
+						slider {
+							all: unset;
+						}
+
+						highlight {
+							background: $color_7;
+							border: 0;
+							border-radius: 16px;
+						}
+					}
+				}
+			}
+		}
+
+		.center {
+			background-color: $color_1;
+			padding: 0 48px;
+		}
+
+		.right {
+			background-color: $color_1;
+			padding: 0 24px;
+
+			.wifi-container {
+				.icon {
+					all: unset;
+					margin-right: 16px;
+
+					label {
+						font-size: 32px;
+						color: $color_4;
+					}
+				}
+
+				.text {
+					color: $color_4;
+					font-weight: bold;
+					margin-right: 32px;
+				}
+			}
+
+		}
+	}
+}

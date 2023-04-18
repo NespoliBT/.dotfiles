@@ -1,0 +1,79 @@
+(defpoll todoProgress
+    :interval "1s"
+    `/home/$USER/.config/eww/scripts/todo`
+)
+
+(defpoll todoItem
+    :interval "5m"
+    "head -n 1 /home/$USER/.config/eww/consts/todo.txt"
+)
+
+(defpoll actualValue
+    :interval "1s"
+    "head -n 2 /home/$USER/.config/eww/consts/todo.txt | tail -n 1"
+)
+
+(defpoll maxValue
+    :interval "1s"
+    "tail -n 1 /home/$USER/.config/eww/consts/todo.txt"
+)
+
+(defwindow todo
+    :monitor 0
+    :geometry (geometry
+        :anchor "top right"
+    )
+
+    :exclusive true
+    :stacking "bg"
+
+    (box
+        :class "todo-container" 
+        
+        (box
+            :class "todo"
+            :space-evenly false
+            :orientation "vertical"
+        
+            (label
+                :text "TODO"
+                :class "todo-title"
+                :valign "start"
+                :halign "start"
+            )
+            (label
+                :text todoItem
+                :class "todo-item"
+                :valign "start"
+                :halign "start"
+            )
+            (label
+                :text "${actualValue}/${maxValue}"
+                :class "todo-progress"
+                :valign "start"
+                :halign "start"
+            )
+            (box
+                :class "progress-container"
+                :space-evenly false
+
+                (button
+                    :class "button"
+                    :onclick "sed -i '2s/.*/${actualValue - 1}/' /home/$USER/.config/eww/consts/todo.txt"
+                    "-"
+                )
+                (progress
+                    :class "todo-progress"
+                    :value todoProgress
+                    :halign "start"
+                    :valign "start"
+                )
+                (button
+                    :class "button"
+                    :onclick "sed -i '2s/.*/${actualValue + 1}/' /home/$USER/.config/eww/consts/todo.txt"
+                    "+"
+                )
+            )
+        )
+    )
+)

@@ -1,8 +1,9 @@
 (include "./def/poll.yuck")
+(include "./widgets/todo.yuck")
 
 (defwindow bar
 	:monitor 0
-	:geometry (geometry 
+	:geometry (geometry
 			:width "100%" 
 			:halign "center"
 			:anchor "top center"
@@ -18,6 +19,7 @@
 			(box
 				:class "left"
 				:halign "start"
+				:space-evenly false
 				
 				(box
 					:class "battery"
@@ -34,29 +36,62 @@
 						:halign "start"
 					)
 				)
-				(scale
-					:class "brightness"
-					:min 0
-					:max 254
-					:value brightness
-					:onchange "brightnessctl s {}"
+				(box
+					:class "brightness-container"
+					:space-evenly false
+					(label :class "icon" :text "󰃠")
+					(scale
+						:class "brightness"
+						:min 0
+						:max 254
+						:value brightness
+						:onchange "brightnessctl s {}"
+					)
 				)
-				(scale
-					:class "volume"
-					:min 0
-					:max 100
-					:value volume
-					:onchange "wpctl set-volume @DEFAULT_SINK@ {}%"
+				(box
+					:class "volume-container"
+					:space-evenly false
+					(label :class "icon" :text "󰕾")
+					(scale
+						:class "volume"
+						:min 0
+						:max 100
+						:value volume
+						:onchange "wpctl set-volume @DEFAULT_SINK@ {}%"
+					)
 				)
 			)
-			(label
+			(box
 				:class "center"
-				:text sentence
+				:space-evenly false
+				
+				(label
+					:text sentence
+				)
 			)
-			(label
+			(box
 				:class "right"
 				:halign "end"
-				:text time
+				:space-evenly false
+
+				(box
+					:class "wifi-container"
+					:space-evenly false
+
+					(button
+						:class "icon"
+						:halign "end"
+						"󰤨"
+					)
+					(label
+						:class "text"
+						:halign "start"
+						:text wifi
+					)
+				)
+				(label
+					:text time
+				)
 			)
 		)
 	)

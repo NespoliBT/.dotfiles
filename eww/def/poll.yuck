@@ -25,5 +25,5 @@
 (defpoll sentence :interval "30m"
     `/home/$USER/.config/eww/scripts/sentence`)
 
-(defpoll currentTODO :interval "30s"
-    `/home/$USER/.config/eww/scripts/currentTODO`)
+(defpoll music :interval "1s"
+    `/home/$USER/.config/eww/scripts/music`)

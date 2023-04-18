@@ -1,0 +1,5 @@
+#!/bin/bash
+
+current_song=$(playerctl metadata --format "{{ title }} - {{ artist }}")
+
+echo "$current_song" && exit

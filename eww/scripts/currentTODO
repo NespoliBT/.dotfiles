@@ -1,5 +1,0 @@
-#!/bin/bash
-
-percentage=40
-
-echo "$percentage" && exit

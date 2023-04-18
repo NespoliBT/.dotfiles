@@ -1,5 +1,10 @@
 #!/bin/bash
 
 percentage="$(pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '\d+(?=%)' | head -n 1)"
+muted="$(pactl list sinks | grep -Po 'Mute: \K\w+')"
+
+if [ "$muted" = "yes" ]; then
+    percentage=0
+fi
 
 echo "$percentage" && exit

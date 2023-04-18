@@ -1,0 +1,60 @@
+.todo-container {
+    margin: 32px;
+    
+    .todo {
+        background: $color_1;
+        border: 5px solid $color_4;
+        padding: 32px;
+
+        .todo-title {
+            font-size: 48px;
+            color: $color_8;
+            margin-bottom: 24px;
+            font-weight: bold;
+        }
+
+        .todo-item {
+            font-size: 32px;
+            color: $color_9;
+        }
+
+        .todo-progress {
+            font-size: 24px;
+            margin-top: 16px;
+        }
+
+        .progress-container {
+            margin-top: 32px;
+
+            .button {
+                all: unset;
+                background-color: $color_2;
+                padding: 12px;
+                border-radius: 90px;
+                
+                label {
+                    all: unset;
+                    font-size: 16px;
+                    min-width: 18px;
+                }
+            }
+
+            .todo-progress {
+                trough {
+                    background: $color_2;
+                    border: 0;
+                    border-radius: 16px;
+                    min-height: 16px;
+                    margin: 0 16px;
+
+                    progress {
+                        all: unset;
+                        background-color: $color_3;
+                        min-height: 16px;
+                        border-radius: 16px;
+                    }
+                }
+            }
+        }
+    }
+}

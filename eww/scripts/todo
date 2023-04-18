@@ -1,0 +1,7 @@
+#!/bin/bash
+value=`head -n 2 /home/$USER/.config/eww/consts/todo.txt | tail -n 1`
+max=`head -n 3 /home/$USER/.config/eww/consts/todo.txt | tail -n 1`
+
+echo $((value * 100 / max))
+
+exit

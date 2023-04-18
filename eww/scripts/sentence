@@ -1,4 +1,7 @@
 #!/bin/bash
-sentences=$(cat ~/.config/eww/consts/sentences.txt)
 
-echo "$sentences" | shuf -n 1 && exit
+sentences=`cat ~/.config/eww/consts/sentences.txt | shuf -n 1`
+
+echo "~ $sentences ~"
+
+exit
