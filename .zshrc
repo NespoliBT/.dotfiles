@@ -9,7 +9,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # Antigen configs 🔥
 # Downloaded via: curl -L git.io/antigen > antigen.zsh
-source ~/antigen.zsh
+source ~/.antigen.zsh
 
 # Load the oh-my-zsh library
 antigen use oh-my-zsh
