@@ -1,12 +1,23 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-workspaces=`hyprctl workspaces | grep ID | sed 's/()/(1)/g' | awk 'NR>1{print $1}' RS='(' FS=')'`
-active_workspace=`hyprctl monitors | grep active | sed 's/()/(1)/g' | awk 'NR>1{print $1}' RS='(' FS=')'`
+socat -u UNIX-CONNECT:/tmp/hypr/"$HYPRLAND_INSTANCE_SIGNATURE"/.socket2.sock - | while read -r line; do
+  formattedWorkspaces=()
+    
+  workspaces=$(hyprctl workspaces -j)
+  activeWorkspace=$(hyprctl activeworkspace -j)
+  active_id=$(echo "$activeWorkspace" | jq -r '.id')
 
-# cycle through workspaces and print the active one
-for workspace in $workspaces; do
-    if [ "$workspace" = "$active_workspace" ]; then
-        echo "(label\ text:\"asd\")"
-        exit
-    fi
+  while IFS= read -r w; do
+      id=$(echo "$w" | jq -r '.id')
+      color=$(if [[ $id -eq $active_id ]]; then echo "#63aec0"; else echo "#333f4b"; fi)
+
+      # Add the formatted workspace object to the array
+      formattedWorkspaces+=("{\"id\": $((id-1)), \"color\": \"$color\"}")
+  done <<< "$(echo "$workspaces" | jq -c '.[]')"
+
+  # Join formatted workspace objects with commas
+  sortedWorkspaces=$(printf '%s\n' "${formattedWorkspaces[@]}" | jq -s 'sort_by(.id)')
+
+  # Print the formatted workspaces array in JSON format
+  printf '%s\n' "$sortedWorkspaces" | jq -c .
 done

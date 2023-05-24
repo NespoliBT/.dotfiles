@@ -20,7 +20,18 @@
 				:class "left"
 				:halign "start"
 				:space-evenly false
-				
+				(for i in workspace
+				   (button
+					   :onclick "hyprctl dispatch workspace ${i.num}"
+					   :class "workspace"
+					   (label
+							:class "ws-text"
+							:style "color: ${i.color};"
+							:text "${ws-icons[i.id]}"
+					   )
+				   )
+			   )
+			   
 				(box
 					:class "battery"
 					:space-evenly true
@@ -73,6 +84,7 @@
 				:class "right"
 				:halign "end"
 				:space-evenly false
+
 
 				(box
 					:class "wifi-container"

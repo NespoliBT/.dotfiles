@@ -1,6 +1,7 @@
 @import "./main.scss";
 
 .container {
+
 	.bar {
 		margin: 16px 24px;
 		margin-bottom: 0;
@@ -10,12 +11,14 @@
 		.right {
 			background-color: $color_1;
 			border-radius: 50px;
+			margin: 0 10px;
 		}
 
 		.left {
 			padding-right: 14px;
+
 			.battery {
-				padding: 0 24px;
+				padding-left: 24px;
 
 				.icon {
 					font-size: 32px;
@@ -30,7 +33,8 @@
 			}
 
 			.brightness-container {
-				margin-left: 32px;
+				margin-left: 16px;
+
 				.icon {
 					font-size: 32px;
 					margin-right: 10px;
@@ -60,12 +64,14 @@
 			}
 
 			.volume-container {
-				margin-left: 32px;
+				margin-left: 16px;
+
 				.icon {
 					font-size: 32px;
 					color: $color_7;
 					margin-right: 8px;
 				}
+
 				.volume {
 					min-width: 150px;
 
@@ -85,6 +91,17 @@
 							border-radius: 16px;
 						}
 					}
+				}
+			}
+
+			.workspace {
+				all: unset;
+				min-height: 10px;
+				min-width: 30px;
+				margin: 0 10px;
+
+				.ws-text {
+					font-size: 32px;
 				}
 			}
 		}

@@ -22,8 +22,12 @@
 (defpoll mic :interval "1s"
     `/home/$USER/.config/eww/scripts/mic-volume`)
 
-(defpoll sentence :interval "30m"
+(defpoll sentence :interval "2m"
     `/home/$USER/.config/eww/scripts/sentence`)
 
 (defpoll music :interval "1s"
     `/home/$USER/.config/eww/scripts/music`)
+
+(deflisten workspace "scripts/workspaces")
+
+(defvar ws-icons '["", "", "", "", "󰎆", "-", "-", "-", "-"]')
