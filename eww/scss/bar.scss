@@ -21,7 +21,7 @@
 				padding-left: 24px;
 
 				.icon {
-					font-size: 32px;
+					font-size: 20px;
 					margin-right: 10px;
 					color: $color_6;
 				}
@@ -114,6 +114,16 @@
 		.right {
 			background-color: $color_1;
 			padding: 0 24px;
+
+			.note {
+				all: unset;
+				margin-right: 32px;
+				font-weight: bold;
+
+				label {
+					color: $color_7;
+				}
+			}
 
 			.wifi-container {
 				.icon {

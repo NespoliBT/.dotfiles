@@ -6,21 +6,21 @@ charging=""
 icon=""
 
 if [ $per -gt 90 ]; then
-    icon=""
+    icon="󰣐"
 elif [ $per -gt 60 ]; then
-    icon=""
+    icon="󰁿"
 elif [ $per -gt 30 ]; then
-    icon=""
+    icon="󰁼"
 elif [ $per -gt 10 ]; then
-    icon=""
+    icon="󰁺"
 else
-    icon=""
+    icon="󰂎"
 fi
 
 if [ $status = "Charging" ]; then
-    charging=""
+    charging=" 󱐋"
 else
-    charging=""
+    charging=""
 fi 
 
 echo "$icon$charging" && exit

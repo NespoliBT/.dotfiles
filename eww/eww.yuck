@@ -85,6 +85,11 @@
 				:halign "end"
 				:space-evenly false
 
+				(button
+					:class "note"
+					:onclick "sh /home/nespoli/.config/eww/scripts/newNote"
+					""
+				)
 
 				(box
 					:class "wifi-container"

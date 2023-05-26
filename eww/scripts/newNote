@@ -1,0 +1,7 @@
+#!bin/bash
+
+# Get todays date
+today=$(date +%Y-%m-%d)
+touch "$HOME/Appunti/Personale/Sbatti vari/$today.md"
+
+xdg-open "obsidian://open?vault=Appunti&file=Personale%2FSbatti%20vari%2F$today.md"
