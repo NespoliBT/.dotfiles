@@ -1,0 +1,55 @@
+@import "./main.scss";
+
+.dashboard-container {
+    min-width: 1200px;
+    min-height: 800px;
+
+    .top,
+    .weather,
+    .image {
+        border: 5px solid $color_8;
+    }
+
+    .left {
+        margin-right: 16px;
+
+        .top {
+            background: $color_2;
+            padding: 16px 32px;
+
+            .sentence {
+                padding: 0 8px;
+            }
+        }
+
+        .bottom {
+            .weather {
+                background: $color_2;
+                margin-top: 32px;
+                padding: 32px;
+
+                .icon {
+                    font-size: 72px;
+                }
+
+                .city,
+                .temp {
+                    font-size: 32px;
+                    font-weight: 600;
+                }
+
+                .temp {}
+            }
+        }
+    }
+
+    .right {
+        margin-left: 16px;
+
+        .image {
+            background-image: url("/home/nespoli/.config/hypr/img.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+    }
+}

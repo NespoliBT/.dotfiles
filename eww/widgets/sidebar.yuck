@@ -1,0 +1,89 @@
+(defwindow sidebar
+    :monitor 0
+    :geometry (geometry
+        :width "500"
+        :height "100%"
+        :anchor "top right"
+        :y "-60"
+    )
+    :stacking "overlay"
+
+    (box
+        :class "sidebar-container"
+        :orientation "vertical"
+        :space-evenly false
+
+        (button
+            :class "close"
+            :onclick "eww close sidebar"
+            :halign "end"
+            :hexpand true
+            ""
+        )
+
+        
+        (label
+            :class "title"
+            :text "~ Dio dammi la forza ~"
+        )
+
+        (label
+            :class "time"
+            :text time
+        )
+
+        (box
+            :class "network"
+            :orientation "vertical"
+            :space-evenly false
+
+            (label
+                :class "ip"
+                :text ip
+            )
+
+            (box
+                :class "speeds"
+
+                (label
+                    :class "up"
+                    :text " ${EWW_NET.wlan0.NET_UP}"
+                )
+                (label
+                    :class "down"
+                    :text " ${EWW_NET.wlan0.NET_DOWN}"
+                )
+            )
+
+            (scroll
+                :class "network-list"
+                :vscroll true
+                :hscroll false
+                :height 500
+
+                (box
+                    :space-evenly false
+                    :orientation "vertical"
+                    :spacing 10
+
+                    (for i in network_list
+                        (eventbox
+                            :class "network-button"
+                            :width 400
+                            :height 50
+                            :active true
+                            :onclick 'iwctl station wlan0 connect "${i.name}" &'
+                            :cursor "pointer"
+
+                            "${i.icon} ${i.name}"
+                        )
+                    )
+                )
+            )
+
+            (calendar
+                :class "calendar"
+            )
+        )
+    ) 
+)

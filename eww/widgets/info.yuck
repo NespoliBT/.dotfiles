@@ -1,0 +1,58 @@
+(box
+                :class "info"
+                :orientation "vertical"
+                :spacing 32
+
+                (box
+                    :class "top"
+                    :height 100
+
+                    
+                    (transform
+                        :class "ram-icon"
+                        :translate-x 70
+                        
+                        (label
+                            :text "asd"
+                        )
+                    )
+                    (circular-progress
+                        :class "ram"
+                        :start-at 75
+                        :thickness 20
+                        :clockwise false
+                        :value "${EWW_RAM.used_mem_perc}"
+                    )
+                    
+
+                    (circular-progress
+                        :class "cpu"
+                        :start-at 75
+                        :thickness 20
+                        :clockwise false
+                        :value "${EWW_CPU.avg}"
+                    )
+                )
+
+                (box
+                    :class "bottom"
+                    :height 150
+
+                    (circular-progress
+                        :class "disk"
+                        :start-at 75
+                        :thickness 20
+                        :clockwise false
+                        :value "${EWW_DISK["/home"].used_perc}"
+                    )
+
+                    (circular-progress
+                        :class "battery"
+                        :start-at 75
+                        :thickness 20
+                        :clockwise false
+                        :value "${EWW_BATTERY.BAT0.capacity}"
+                    )
+
+                )
+            )

@@ -1,0 +1,69 @@
+(defwindow dashboard
+    :monitor 0
+    :geometry (geometry
+        :anchor "center center"
+    )
+
+    :exclusive true
+    :stacking "bg"
+
+    (box
+        :class "dashboard-container" 
+        
+        (box
+            :class "left"
+            :orientation "vertical"
+            :space-evenly false
+            
+            (centerbox
+                :class "top"
+                
+                (label
+                    :text "~"
+                )
+                (label
+                    :class "sentence"
+                    :width 300
+                    :wrap true
+                    :text sentence
+                )
+                (label
+                    :text "~"
+                )
+            )
+            
+            (box
+                :class "bottom"
+                :space-evenly false
+                
+                (box
+                    :class "weather"
+                    :orientation "vertical"
+                    :space-evenly false
+                    :width 300
+                
+                    (label
+                        :class "icon"
+                        :text "${weather.icon}"
+                    )
+                    (label
+                        :class "city"
+                        :text "${weather.city}"
+                    )
+                    (label
+                        :class "temp"
+                        :text "${weather.temp}"
+                    )
+                )
+            )
+        )
+        
+        (box
+            :class "right"
+            
+            (box
+                :class "image"
+            )
+        )
+    )
+)

@@ -9,13 +9,12 @@ socat -u UNIX-CONNECT:/tmp/hypr/"$HYPRLAND_INSTANCE_SIGNATURE"/.socket2.sock - |
 
   while IFS= read -r w; do
       id=$(echo "$w" | jq -r '.id')
-      color=$(if [[ $id -eq $active_id ]]; then echo "#63aec0"; else echo "#333f4b"; fi)
+      focus=$(if [[ $id -eq $active_id ]]; then echo "focus"; else echo ""; fi)
 
       # Add the formatted workspace object to the array
-      formattedWorkspaces+=("{\"id\": $((id-1)), \"color\": \"$color\"}")
+      formattedWorkspaces+=("{\"id\": $((id-1)), \"focus\": \"$focus\"}")
   done <<< "$(echo "$workspaces" | jq -c '.[]')"
 
-  # Join formatted workspace objects with commas
   sortedWorkspaces=$(printf '%s\n' "${formattedWorkspaces[@]}" | jq -s 'sort_by(.id)')
 
   # Print the formatted workspaces array in JSON format

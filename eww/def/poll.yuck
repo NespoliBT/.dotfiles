@@ -10,8 +10,8 @@
 (defpoll wifi :interval "3s"
         `/home/$USER/.config/eww/scripts/wifi`)
 
-(defpoll eth :interval "3s"
-        `/home/$USER/.config/eww/scripts/ethernet`)
+(defpoll network_list :interval "3s"
+        `/home/$USER/.config/eww/scripts/network_list`)
 
 (defpoll brightness :interval "1s"
     "cat /sys/class/backlight/amdgpu_bl0/brightness")
@@ -23,11 +23,22 @@
     `/home/$USER/.config/eww/scripts/mic-volume`)
 
 (defpoll sentence :interval "2m"
-    `/home/$USER/.config/eww/scripts/sentence`)
+    `/home/$USER/.config/eww/scripts/sentence sentences.txt`)
+
+(defpoll cits :interval "2m"
+    `/home/$USER/.config/eww/scripts/sentence cits.txt`)
 
 (defpoll music :interval "1s"
     `/home/$USER/.config/eww/scripts/music`)
 
+(defpoll weather :interval "10m"
+    `/home/$USER/.config/eww/scripts/weather`)
+
+(defpoll ip :interval "5s"
+    `ip -json route get 8.8.8.8 | jq -r '.[].prefsrc'`)
+
 (deflisten workspace "scripts/workspaces")
 
 (defvar ws-icons '["", "", "", "", "󰎆", "-", "-", "-", "-"]')
+
+(defvar sidebarOpen true)

@@ -43,7 +43,7 @@ export TERM=xterm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 COLORSCHEMEDIR="$HOME/.cache/wal/"
-if [ -d "$COLORSCHEMEDIR" ]; then
+if [ -d "$COLORSCHEMEDIR" ] && [ "$TERM_PROGRAM" != "vscode" ]; then
   cat "$COLORSCHEMEDIR/sequences"  
 fi
 

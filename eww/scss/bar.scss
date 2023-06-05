@@ -9,9 +9,10 @@
 		.left,
 		.center,
 		.right {
-			background-color: $color_1;
-			border-radius: 50px;
+			background-color: $color_2;
+			border-radius: 0px;
 			margin: 0 10px;
+			border: 2px solid $color_8;
 		}
 
 		.left {
@@ -45,9 +46,9 @@
 					min-width: 150px;
 
 					trough {
-						background: $color_2;
+						background: $color_1;
 						border: 0;
-						border-radius: 16px;
+						border-radius: 0px;
 						min-height: 16px;
 
 						slider {
@@ -57,7 +58,7 @@
 						highlight {
 							background: $color_8;
 							border: 0;
-							border-radius: 16px;
+							border-radius: 0px;
 						}
 					}
 				}
@@ -76,9 +77,9 @@
 					min-width: 150px;
 
 					trough {
-						background: $color_2;
+						background: $color_1;
 						border: 0;
-						border-radius: 16px;
+						border-radius: 0px;
 						min-height: 16px;
 
 						slider {
@@ -88,7 +89,7 @@
 						highlight {
 							background: $color_7;
 							border: 0;
-							border-radius: 16px;
+							border-radius: 0px;
 						}
 					}
 				}
@@ -102,18 +103,36 @@
 
 				.ws-text {
 					font-size: 32px;
+					color: $color_9;
+
+					&.focus {
+						color: $color_7;
+					}
 				}
 			}
 		}
 
 		.center {
-			background-color: $color_1;
 			padding: 0 48px;
 		}
 
 		.right {
-			background-color: $color_1;
 			padding: 0 24px;
+
+			.dashboard {
+				all: unset;
+				margin-left: 32px;
+			}
+
+			.theme {
+				all: unset;
+				margin-right: 32px;
+				font-weight: bold;
+
+				label {
+					color: $color_9;
+				}
+			}
 
 			.note {
 				all: unset;

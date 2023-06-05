@@ -1,0 +1,14 @@
+#!/bin/bash
+weather=`curl -s wttr.in/?format=3`
+weather=${weather//,/}
+weather=${weather//:/}
+
+IFS=' ' read -r -a array <<< "$weather"
+
+# set city as first element of array or default to ""
+city=${array[0]:-""}
+state=${array[1]:-""}
+icon=${array[2]:-""}
+temp=${array[3]:-""}
+
+echo $city $icon $temp | jq -R -s 'split(" ") | {city: .[0], icon: .[1], temp: .[2]}'

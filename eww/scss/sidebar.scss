@@ -1,0 +1,105 @@
+@import "./main.scss";
+
+.sidebar-container {
+    background-color: $color_1;
+    padding: 32px;
+
+    .close {
+        all: unset;
+        padding: 9px 16px;
+        background-color: $color_6;
+
+        label {
+            color: $color_2;
+        }
+    }
+
+    .time {
+        font-size: 32px;
+        margin-bottom: 32px;
+    }
+
+    .title {
+        color: $color_3;
+        font-family: 'Pacifico';
+        font-size: 36px;
+        font-weight: 800;
+        margin-bottom: 32px;
+    }
+
+
+    .network {
+        .ip {
+            font-size: 24px;
+        }
+
+        .speeds {
+            margin: 32px 0;
+
+            .up,
+            .down {
+                font-size: 24px;
+            }
+
+            .up {
+                color: $color_4;
+            }
+
+            .down {
+                color: $color_5;
+            }
+        }
+
+        .network-list {
+            border-top: 2px dashed $color_7;
+            border-bottom: 2px dashed $color_7;
+            padding-top: 16px;
+
+            .network-button {
+                background-color: $color_4;
+                padding: 16px;
+                border-radius: 64px;
+
+                label {
+                    font-size: 24px;
+                    margin: 0 24px;
+                    color: $color_1;
+                }
+            }
+        }
+
+        .info {
+            margin-top: 32px;
+
+            .top {
+                .ram {
+                    background-color: $color_2;
+                    color: $color_7;
+                }
+
+                .cpu {
+                    background-color: $color_2;
+                    color: $color_6;
+                }
+            }
+
+            .bottom {
+                .disk {
+                    color: $color_3;
+                    background-color: $color_2;
+                }
+
+                .battery {
+                    color: $color_8;
+                    background-color: $color_2;
+                }
+            }
+        }
+
+        .calendar {
+            padding-top: 32px;
+            border: 0;
+            color: $color_9;
+        }
+    }
+}
