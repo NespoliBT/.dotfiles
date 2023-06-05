@@ -2,4 +2,4 @@
 
 ## Screenshot
 
-![Screenshot](./images/screenshot.png)
+![Screenshot](./images/screenshot_1.png)
