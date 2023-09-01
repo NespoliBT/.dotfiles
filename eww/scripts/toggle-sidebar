@@ -1,0 +1,10 @@
+#!/bin/bash
+
+windows=`eww windows | grep -v "\*" | grep sidebar`
+
+if [[ -z "$windows" ]]
+then
+  eww close sidebar
+else
+  eww open sidebar 
+fi

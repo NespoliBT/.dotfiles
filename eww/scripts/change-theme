@@ -31,7 +31,7 @@ cp $themePath/background.jpg $hyprConfig/background.jpg
 cp $themePath/img.jpg $hyprConfig/img.jpg
 cp $themePath/hypr-colors.conf $hyprConfig/hypr-colors.conf
 
-wal -i $themePath/background.jpg &
+wal -i $themePath/img.jpg &
 
 # if hyprpaper is running kill it
 if pgrep -x "hyprpaper" > /dev/null

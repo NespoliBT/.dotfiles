@@ -1,8 +1,9 @@
 @import "./main.scss";
 
 .sidebar-container {
-    background-color: $color_1;
+    background-color: $color_2;
     padding: 32px;
+    border-left: 1px solid $color_8;
 
     .close {
         all: unset;

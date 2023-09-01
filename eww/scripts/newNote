@@ -1,7 +1,15 @@
-#!bin/bash
+#!/bin/bash
+
+months=("Gennaio" "Febbraio" "Marzo" "Aprile" "Maggio" "Giugno" "Luglio" "Agosto" "Settembre" "Ottobre" "Novembre" "Dicembre")
+
+currentDay=$(date +%d)
+currentMonth=$(date +%m)
+currentYear=$(date +%Y)
+
+mkdir "$HOME/Appunti/Personale/Sbatti vari/$currentYear/${months[$currentMonth - 1]}"
 
 # Get todays date
 today=$(date +%Y-%m-%d)
-touch "$HOME/Appunti/Personale/Sbatti vari/$today.md"
+touch "$HOME/Appunti/Personale/Sbatti vari/$currentYear/${months[$currentMonth - 1]}/$currentDay ${months[$currentMonth - 1]} $currentYear.md"
 
-xdg-open "obsidian://open?vault=Appunti&file=Personale%2FSbatti%20vari%2F$today.md"
+xdg-open "obsidian://open?vault=Appunti&file=Personale%2FSbatti%20vari%2F${months[$currentMonth - 1]}%2F$currentDay%20${months[$currentMonth - 1]}%20$currentYear.md"
