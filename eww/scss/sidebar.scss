@@ -1,41 +1,39 @@
 @import "./main.scss";
 
 .sidebar-container {
-    background-color: $color_2;
-    padding: 32px;
-    border-left: 1px solid $color_8;
+    padding: 48px;
+    background-color: rgba($color_1, 0.8);
 
-    .close {
-        all: unset;
-        padding: 9px 16px;
-        background-color: $color_6;
-
-        label {
-            color: $color_2;
+    .top {
+        .time {
+            background-color: $color_2;
+            font-size: 32px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px -10px black;
+            padding: 32px 0;
         }
-    }
 
-    .time {
-        font-size: 32px;
-        margin-bottom: 32px;
-    }
+        .title {
+            color: $color_6;
+            background-color: $color_2;
+            font-family: 'Pacifico';
+            font-size: 36px;
+            font-weight: 800;
+            border-radius: 8px;
+            box-shadow: 0 0 20px -10px black;
+        }
 
-    .title {
-        color: $color_3;
-        font-family: 'Pacifico';
-        font-size: 36px;
-        font-weight: 800;
-        margin-bottom: 32px;
-    }
-
-
-    .network {
         .ip {
             font-size: 24px;
+            background-color: $color_2;
+            border-radius: 16px;
+            box-shadow: 0 0 20px -10px black;
         }
 
         .speeds {
-            margin: 32px 0;
+            background-color: $color_2;
+            border-radius: 16px;
+            box-shadow: 0 0 20px -10px black;
 
             .up,
             .down {
@@ -50,10 +48,13 @@
                 color: $color_5;
             }
         }
+    }
+
+
+
+    .bottom {
 
         .network-list {
-            border-top: 2px dashed $color_7;
-            border-bottom: 2px dashed $color_7;
             padding-top: 16px;
 
             .network-button {
@@ -97,10 +98,107 @@
             }
         }
 
-        .calendar {
-            padding-top: 32px;
-            border: 0;
-            color: $color_9;
+        .music {
+            background-color: $color_2;
+            box-shadow: 0 0 20px -10px black;
+            padding: 32px;
+            border-radius: 16px;
+
+            .music_thumbnail {
+                background-size: cover;
+                background-position: center;
+                min-height: 426px;
+                border: 4px solid $color_8;
+                border-radius: 16px;
+                box-shadow: inset 0 0 5px black;
+
+                .info {
+                    background: rgba(0, 0, 0, 0.5);
+                    padding: 20px;
+                    border-bottom-left-radius: 16px;
+                    border-bottom-right-radius: 16px;
+
+                    .name {
+                        color: white;
+                        font-weight: 600;
+                        margin-bottom: 4px;
+                    }
+
+                    .artist {
+                        color: white;
+                    }
+                }
+            }
+
+            .music-controller {
+                .control {
+                    all: unset;
+                    padding: 8px;
+                    margin: 8px;
+
+                    label {
+                        font-size: 40px;
+                    }
+                }
+            }
+        }
+
+        .calendar-container {
+            background-color: $color_2;
+            border-radius: 16px;
+            box-shadow: 0 0 20px -10px black;
+
+            .calendar {
+                padding-top: 32px;
+                border: 0;
+                color: $color_9;
+                background-color: transparent;
+                padding: 16px;
+                border-radius: 16px;
+                font-size: 24px;
+            }
+        }
+
+        .sentence-container {
+            padding: 16px;
+            background-color: $color_2;
+            box-shadow: 0 0 20px -10px #000000;
+            border-radius: 8px;
+            margin-top: 32px;
+
+            label {
+                margin: 0 16px;
+            }
+        }
+
+        .side {
+
+            .weather {
+                background: $color_2;
+                padding: 32px;
+                border-radius: 16px;
+                box-shadow: 0 0 20px -10px black;
+
+                .icon {
+                    font-size: 72px;
+                }
+
+                .city,
+                .temp {
+                    font-size: 32px;
+                    font-weight: 600;
+                }
+
+                .temp {}
+            }
+
+            .image {
+                background-image: url("/home/nespoli/.config/hypr/img.jpg");
+                background-size: cover;
+                background-position: center;
+                box-shadow: 0 0 20px -10px black;
+                border-radius: 16px;
+            }
         }
     }
 }

@@ -1,5 +1,38 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-current_song=$(playerctl metadata --format "{{ title }} - {{ artist }}")
+token=$(ls -1 "$HOME/.config/eww/assets/music"*.jpg | head -n 1 | sed "s|$HOME/.config/eww/assets/music\([0-9]*\)\.jpg|\1|")
+name=`playerctl metadata title`
+artist=`playerctl metadata artist`
+status=`playerctl status`
+button=""
 
-echo "$current_song" && exit
+if [[ $status == "Paused" ]] then
+    button=""
+fi
+
+echo $token"|||"$name"|||"$artist"|||"$button | jq -sRc 'split("|||") | {token: .[0], name: .[1], artist: .[2], button: .[3]}'
+
+dbus_filter='type=signal,interface=org.freedesktop.DBus.Properties,member=PropertiesChanged'
+
+dbus-monitor "$dbus_filter" |
+while read -r line; do
+    if [[ $line == *'/org/mpris/MediaPlayer2'* ]]; then
+        current_song=$(playerctl metadata --format "{{ title }} - {{ artist }}")
+        image=`playerctl metadata mpris:artUrl`
+        name=`playerctl metadata title`
+        artist=`playerctl metadata artist`
+        status=`playerctl status`
+        button=""
+
+        if [[ $status == "Paused" ]] then
+            button=""
+        fi
+
+        token=$RANDOM
+
+        rm -f $HOME/.config/eww/assets/music*.jpg
+        curl -s $image --output $HOME/.config/eww/assets/music$token.jpg
+
+        echo $token"|||"$name"|||"$artist"|||"$button | jq -sRc 'split("|||") | {token: .[0], name: .[1], artist: .[2], button: .[3]}'
+    fi
+done

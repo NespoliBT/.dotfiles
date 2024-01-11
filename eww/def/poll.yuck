@@ -1,9 +1,6 @@
 (defpoll time :interval "20s"
 	`date +"%d %B - %H:%M"`)
 
-(defpoll battery :interval "3s"
-	`/home/$USER/.config/eww/scripts/battery`)
-
 (defpoll battery-status :interval "1s"
     `/home/$USER/.config/eww/scripts/battery-status`)
 
@@ -28,17 +25,20 @@
 (defpoll cits :interval "2m"
     `/home/$USER/.config/eww/scripts/sentence cits.txt`)
 
-(defpoll music :interval "1s"
-    `/home/$USER/.config/eww/scripts/music`)
-
 (defpoll weather :interval "10m"
     `/home/$USER/.config/eww/scripts/weather`)
 
 (defpoll ip :interval "5s"
     `ip -json route get 8.8.8.8 | jq -r '.[].prefsrc'`)
 
+(defpoll themes :interval "30m"
+    `/home/$USER/.config/eww/scripts/themes`)
+
+(deflisten music "scripts/music")
+
 (deflisten workspace "scripts/workspaces")
 
 (defvar ws-icons '["", "", "", "", "󰎆", "-", "-", "-", "-"]')
+
 
 (defvar sidebarOpen true)

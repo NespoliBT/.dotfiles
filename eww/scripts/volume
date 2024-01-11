@@ -1,10 +1,13 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-percentage="$(pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '\d+(?=%)' | head -n 1)"
-muted="$(pactl list sinks | grep -Po 'Mute: \K\w+')"
+output=$(wpctl get-volume @DEFAULT_SINK@)
+volume=$(echo $output | awk '{print $2}')
+mute_status=$(echo $output | awk '{print $3}')
 
-if [ "$muted" = "yes" ]; then
+if [ "$mute_status" = "[MUTED]" ]; then
     percentage=0
+else
+    percentage=$(awk "BEGIN {printf \"%.0f\", $volume*100}")
 fi
 
-echo "$percentage" && exit
+echo "$percentage"

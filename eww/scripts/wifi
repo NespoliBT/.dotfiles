@@ -1,6 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-network=$(iwctl station wlan0 show | grep network | sed 's/.*network\ \ \ \ //' | sed 's/  //g')
+iwgetid -r
 
-echo "$network"
 exit

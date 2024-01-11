@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+themes=$(ls ~/.config/eww/themes)
+themes=($themes)
+
+json_array=()
+themes_array_1=()
+themes_array_2=()
+
+index=0
+
+
+for i in "${!themes[@]}"; do
+    ((index++))
+    
+    # add an object to the array
+    colors=$(cat ~/.config/eww/themes/${themes[$i]}/hypr-colors.conf)
+
+    # truncate every line before the equals sign
+    colors=$(echo "$colors" | sed 's/.*=//')
+
+    colors=($colors)
+
+    colors=$(printf '%s\n' "${colors[@]}" | jq -R . | jq -s .)
+
+    theme=("{\"name\": \"${themes[$i]}\", \"colors\": $colors}")
+    
+    if [ $index -lt 4 ]; then
+        themes_array_1+=($theme)
+    else
+        themes_array_2+=($theme)
+    fi
+    
+    json_array+=($theme)
+    themes_array[$theme_index]+=$theme
+done
+
+# print the array of objects in JSON format
+echo '[[' "${themes_array_1[@]}"],["${themes_array_2[@]}" ']]' | sed 's/} {/}, {/g' | jq -c .

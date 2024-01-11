@@ -37,12 +37,12 @@
 					
 					(label
 						:class "icon"
-						:text battery-status
+						:text "${battery-status.out}"
 						:halign "end"
 					)
 					(label
 						:class "text"
-						:text battery
+						:text "${battery-status.per}"
 						:halign "start"
 					)
 				)
@@ -83,13 +83,6 @@
 				:class "right"
 				:halign "end"
 				:space-evenly false
-
-				
-				(button
-					:class "theme"
-					:onclick "$HOME/.config/eww/scripts/change-theme"
-					""
-				)
 				
 				(button
 					:class "note"
@@ -115,12 +108,6 @@
 
 				(label
 					:text time
-				)
-
-				(button
-					:class "dashboard"
-					:onclick "eww open sidebar"
-					"󰍜"
 				)
 			)
 		)

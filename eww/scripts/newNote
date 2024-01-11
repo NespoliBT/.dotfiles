@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 months=("Gennaio" "Febbraio" "Marzo" "Aprile" "Maggio" "Giugno" "Luglio" "Agosto" "Settembre" "Ottobre" "Novembre" "Dicembre")
 

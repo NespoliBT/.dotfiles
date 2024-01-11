@@ -1,0 +1,49 @@
+@import "./main.scss";
+
+.theme_selector {
+    background-color: rgba($color_1, 0.8);
+    padding: 48px;
+    
+    .title_container {
+        background-color: $color_2;
+        border-radius: 16px;
+        border: 4px solid $color_8;
+        padding: 32px;
+        margin-bottom: 32px;
+
+        .title {
+            font-family: 'Pacifico';
+            font-size: 48px;
+            color: $color_6;
+        }
+    }
+
+    .themes_container {
+        padding: 32px;
+        background-color: $color_2;
+        border-radius: 16px;
+        border: 4px solid $color_8;
+        margin: 32px 128px;
+
+        .theme {
+
+            .name {
+                font-size: 24px;
+                color: $color_9;
+                font-weight: 500;
+            }
+
+            .image {
+                all: unset;
+                background-size: 100%;
+                border-radius: 16px;
+            }
+
+            .colors {
+                .color {
+                    border-radius: 4px;
+                }
+            }
+        }
+    }
+}

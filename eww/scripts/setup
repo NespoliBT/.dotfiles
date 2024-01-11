@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# open multiple programs from an array without waiting for each to finish
+
+# programs to open
+declare -a programs=(
+    "firefox"
+    "telegram-desktop"
+    "spotify"
+)
+
+# open programs
+for program in "${programs[@]}"; do
+    $program &
+done

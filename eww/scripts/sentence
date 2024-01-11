@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 sentences=`cat ~/.config/eww/consts/${1} | shuf -n 1`
 

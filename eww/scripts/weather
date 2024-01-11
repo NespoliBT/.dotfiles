@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 weather=`curl -s wttr.in/?format=3`
 weather=${weather//,/}
 weather=${weather//:/}

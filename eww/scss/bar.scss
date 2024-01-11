@@ -11,9 +11,9 @@
 		.right {
 			background-color: $color_2;
 
-			border-radius: 0px;
+			border-radius: 10px;
 			margin: 0 10px;
-			border: 2px solid $color_8;
+			border: 3px solid $color_8;
 		}
 
 		.left {
@@ -31,6 +31,10 @@
 				.text {
 					color: $color_6;
 					font-weight: bold;
+				}
+
+				.governor {
+					all: unset;
 				}
 			}
 
@@ -119,21 +123,6 @@
 
 		.right {
 			padding: 0 24px;
-
-			.dashboard {
-				all: unset;
-				margin-left: 32px;
-			}
-
-			.theme {
-				all: unset;
-				margin-right: 32px;
-				font-weight: bold;
-
-				label {
-					color: $color_9;
-				}
-			}
 
 			.note {
 				all: unset;

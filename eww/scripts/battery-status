@@ -1,9 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 status="$(cat "/sys/class/power_supply/BAT0/status")"
 per="$(cat "/sys/class/power_supply/BAT0/capacity")"
+governor="$(cat "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor")"
 charging=""
 icon=""
+gov=""
 
 if [ $per -gt 90 ]; then
     icon="󰣐"
@@ -18,9 +20,18 @@ else
 fi
 
 if [ $status = "Charging" ]; then
-    charging=" 󱐋"
+    charging="⠀󱐋"
 else
     charging=""
-fi 
+fi
 
-echo "$icon$charging" && exit
+if [ $governor = "powersave" ]; then
+    gov="s"
+elif [ $governor = "performance" ]; then
+    gov="p"
+fi
+
+per=$per%
+out="$icon$charging"
+
+echo $gov $per $out | jq -R -s 'split(" ") | {gov: .[0], per: .[1], out: .[2]}'

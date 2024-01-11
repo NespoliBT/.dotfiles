@@ -1,10 +1,10 @@
 (defwindow sidebar
     :monitor 0
     :geometry (geometry
-        :width "500"
+        :width "100%"
         :height "100%"
-        :anchor "top right"
-        :y "-60"
+        :anchor "top left"
+        :y "-62"
     )
     :stacking "overlay"
 
@@ -12,77 +12,178 @@
         :class "sidebar-container"
         :orientation "vertical"
         :space-evenly false
-
-        (button
-            :class "close"
-            :onclick "eww close sidebar"
-            :halign "end"
-            :hexpand true
-            ""
-        )
-
+        :spacing 32
         
-        (label
-            :class "title"
-            :text "~ Dio dammi la forza ~"
-        )
-
-        (label
-            :class "time"
-            :text time
-        )
-
         (box
-            :class "network"
-            :orientation "vertical"
-            :space-evenly false
+            :class "top"
+            :spacing 32
 
+            (label
+                :class "title"
+                :text "~ Dio dammi la forza ~"
+            )
+
+            (label
+                :class "time"
+                :text time
+            )
             (label
                 :class "ip"
                 :text ip
             )
-
+            
             (box
                 :class "speeds"
-
+                
                 (label
                     :class "up"
-                    :text " ${EWW_NET.wlan0.NET_UP}"
+                    :text " ${EWW_NET.wlp1s0.NET_UP}"
                 )
                 (label
                     :class "down"
-                    :text " ${EWW_NET.wlan0.NET_DOWN}"
+                    :text " ${EWW_NET.wlp1s0.NET_DOWN}"
                 )
             )
+        )
 
-            (scroll
-                :class "network-list"
-                :vscroll true
-                :hscroll false
-                :height 500
+        (box
+            :class "bottom"
+            :orientation "horizontal"
+            :spacing 32
+            :space-evenly false
+            :height 300
+
+            (box
+                :orientation "vertical"
 
                 (box
-                    :space-evenly false
+                    :class "music"
                     :orientation "vertical"
-                    :spacing 10
+                    :space-evenly false
+                    :spacing 32
+                    :width 500
+                    :height 600
+                    
+                    (box
+                        :class "music_thumbnail"
+                        :style "background-image: url('/home/nespoli/.config/eww/assets/music${music.token}.jpg');"
 
-                    (for i in network_list
-                        (eventbox
-                            :class "network-button"
-                            :width 400
-                            :height 50
-                            :active true
-                            :onclick 'iwctl station wlan0 connect "${i.name}" &'
-                            :cursor "pointer"
+                        (box
+                            :class "info"
+                            :valign "end"
+                            :orientation "vertical"
 
-                            "${i.icon} ${i.name}"
+                            (label
+                                :class "name"
+                                :text "${music.name}"
+                                :wrap true
+                                :limit-width 32
+                                :show-truncated false
+                                :halign "start"
+                            )
+                            
+                            (label
+                                :class "artist"
+                                :text "${music.artist}"
+                                :wrap true
+                                :halign "start"
+                            )
+                        )
+                    )
+                    
+                    (box
+                        :class "music-controller"
+
+                        (button
+                            :class "control"
+                            :onclick 'playerctl previous'
+                            "󰒮"
+                        )
+
+                        (button
+                            :class "control"
+                            :onclick 'playerctl play-pause'
+                            "${music.button}"
+                        )
+
+                        (button
+                            :class "control"
+                            :onclick 'playerctl next'
+                            "󰒭"
                         )
                     )
                 )
+                (box
+                    :hexpand true
+                )
             )
+            (box
+                :orientation "vertical"
+                
+                (box
+                    :class "calendar-container"
+                    :space-evenly false
+                    :orientation "vertical"
+                    
+                    (calendar
+                        :class "calendar"
+                    )
+                    
+                )
 
-            (calendar
-                :class "calendar"
+                (box
+                    :class "sentence-container"
+                    :valign "start"
+                    :halign "center"
+                    :space-evenly false
+                    :spacing 32
+
+                    (label
+                        :text "~"
+                    )
+                    (label
+                        :class "sentence"
+                        :wrap true
+                        :text sentence
+                    )
+                    (label
+                        :text "~"
+                    )
+                ) 
+            )
+            (box
+                :class "side"
+                :orientation "vertical"
+                :space-evenly false
+                :hexpand true
+                :spacing 32
+                
+
+                (box
+                    :class "image"
+                    :height 600
+                )
+
+                (box
+                    :class "weather"
+                    :orientation "vertical"
+                    :space-evenly false
+                    :width 300
+                    :halign "center"
+                
+                    (label
+                        :class "icon"
+                        :text "${weather.icon}"
+                    )
+                    (label
+                        :class "city"
+                        :text "${weather.city}"
+                    )
+                    (label
+                        :class "temp"
+                        :text "${weather.temp}"
+                    )
+                )
             )
         )
     ) 

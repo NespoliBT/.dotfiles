@@ -1,42 +1,35 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-currentTheme=`cat ~/.config/eww/consts/theme.txt`
+currentTheme=$(cat ~/.config/eww/consts/theme.txt)
 
 hyprConfig=~/.config/hypr
 
-themes=`ls ~/.config/eww/themes`
+themes=$(ls ~/.config/eww/themes)
 themes=($themes)
 
-themeName=""
+themeName=$1
 themePath=""
-
-# select the next theme in the list or the first one if the current theme is the last one
-for i in "${!themes[@]}"; do
-    if [[ "${themes[$i]}" = "${currentTheme}" ]]; then
-        if [[ "${themes[$i+1]}" = "" ]]; then
-            themeName=${themes[0]}
-        else
-            themeName=${themes[$i+1]}
-        fi
-    fi
-done
 
 themePath=~/.config/eww/themes/$themeName
 
-echo $themeName > ~/.config/eww/consts/theme.txt
+echo $themeName >~/.config/eww/consts/theme.txt
 
 rm ~/.config/eww/scss/main.scss
 ln -s $themePath/main.scss ~/.config/eww/scss/main.scss
 cp $themePath/background.jpg $hyprConfig/background.jpg
 cp $themePath/img.jpg $hyprConfig/img.jpg
 cp $themePath/hypr-colors.conf $hyprConfig/hypr-colors.conf
+cp $themePath/mako.conf ~/.config/mako/config
 
-wal -i $themePath/img.jpg &
+pkill eww
+pkill eww
+eww open bar
+
+wal -i $themePath/background.jpg &
 
 # if hyprpaper is running kill it
-if pgrep -x "hyprpaper" > /dev/null
-then
-    killall hyprpaper
+if pgrep -x "hyprpaper" >/dev/null; then
+	killall hyprpaper
 fi
 
 # start hyprpaper
@@ -44,4 +37,6 @@ hyprpaper &
 
 sleep 1
 
-eww reload
+makoctl reload
+
+echo "Theme changed to $themeName"
