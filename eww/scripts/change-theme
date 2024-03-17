@@ -25,18 +25,12 @@ pkill eww
 pkill eww
 eww open bar
 
-wal -i $themePath/background.jpg &
+wal -n -i $themePath/background.jpg &
 
-# if hyprpaper is running kill it
-if pgrep -x "hyprpaper" >/dev/null; then
-	killall hyprpaper
-fi
-
-# start hyprpaper
-hyprpaper &
+swww img $themePath/background.jpg --transition-type center
 
 sleep 1
 
-makoctl reload
+# makoctl reload
 
 echo "Theme changed to $themeName"

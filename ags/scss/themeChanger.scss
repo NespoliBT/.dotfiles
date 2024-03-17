@@ -1,0 +1,32 @@
+.themeChanger {
+    opacity: 0.9;
+
+    .container {
+
+        .title {
+            color: $color_6;
+            font-size: 72px;
+            background-color: $color_2;
+            font-family: Pacifico;
+            margin: 32px;
+            padding: 32px 62px;
+            border-radius: 16px;
+            border: 4px solid $color_8;
+        }
+
+        .list {
+            padding: 32px;
+            background-color: $color_2;
+            border-radius: 16px;
+            border: 4px solid $color_8;
+
+            .row {
+                .theme {
+                    .image {
+                        border-radius: 16px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,5 +1,11 @@
 # NespoliBT's dotfiles
 
-## Screenshot
+![](./images/terminal.png)
 
-![Screenshot](./images/screenshot_1.png)
+![](./images/themeSelector.jpg)
+
+![](./images/fullInfo.jpg)
+
+![](./images/blackhole.jpg)
+
+![](./images/mountains.jpg)

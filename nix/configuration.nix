@@ -11,14 +11,17 @@
       ./programs.nix
       ./services.nix
       ./users.nix
+      ./homemanager.nix
     ];
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   
   # Boot loader stuff 
 
   #boot.loader = {
   #  systemd-boot.enable = true;
   #  efi.canTouchEfiVariables = true;
-  #};
+  #}
 
    boot.loader = {
     efi = {

@@ -1,0 +1,132 @@
+.fullInfo {
+    background-color: rgba($color_1, 0.8);
+
+    .top {
+        padding: 32px;
+
+        .date,
+        .title,
+        .ip {
+            padding: 24px 48px;
+            border-radius: 16px;
+            box-shadow: 0 0 20px -10px black;
+            background-color: $color_2;
+            margin: 0 32px;
+        }
+
+        .date {
+            label {
+                font-size: 24px;
+            }
+        }
+
+        .title {
+            color: $color_6;
+            font-family: 'Pacifico';
+            font-size: 36px;
+            font-weight: 800;
+        }
+
+        .ip {
+            font-size: 24px;
+        }
+    }
+
+    .center {
+        padding: 32px;
+
+        .players {
+            .fullPlayer {
+                background-color: $color_2;
+                box-shadow: 0 0 20px -10px black;
+                padding: 32px;
+                border-radius: 16px;
+
+                .cover {
+                    background-size: cover;
+                    background-position: center;
+                    min-height: 426px;
+                    min-width: 426px;
+                    border: 4px solid $color_8;
+                    border-radius: 16px;
+                    box-shadow: inset 0 0 5px black;
+
+                    .info {
+                        background: rgba(0, 0, 0, 0.5);
+                        padding: 20px;
+                        border-bottom-left-radius: 16px;
+                        border-bottom-right-radius: 16px;
+
+                        .title {
+                            font-weight: bold;
+                        }
+
+                        .author {
+                            margin-top: 16px;
+                        }
+                    }
+                }
+
+                .commands {
+                    margin-top: 16px;
+                    margin-left: 64px;
+                    margin-right: 64px;
+
+                    .button {
+                        all: unset;
+                        padding: 8px;
+                        margin: 8px;
+
+                        label {
+                            font-size: 40px;
+                        }
+                    }
+                }
+            }
+
+            .halfPlayer {
+                background-color: $color_2;
+                margin-bottom: 16px;
+                padding: 16px;
+                border-radius: 16px;
+                box-shadow: 0 0 20px -10px black;
+
+                .cover {
+                    min-width: 200px;
+                    min-height: 200px;
+                    background-size: cover;
+                    background-position: center;
+                    border-radius: 8px;
+                    border: 4px solid $color_8;
+                    box-shadow: inset 0 0 5px black;
+                }
+
+                .info {
+                    padding: 16px;
+
+                    .title {
+                        font-weight: 600;
+                    }
+
+                    .author {
+                        margin-top: 8px;
+                    }
+                }
+
+                .commands {
+                    margin: 0 32px;
+
+                    .button {
+                        all: unset;
+                        padding: 8px;
+                        margin: 8px;
+
+                        label {
+                            font-size: 32px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

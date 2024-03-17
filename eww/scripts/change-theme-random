@@ -44,7 +44,7 @@ hyprpaper &
 
 sleep 1
 
-makoctl reload
+# makoctl reload
 
 # bad workaround tbh
 pkill eww

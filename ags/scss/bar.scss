@@ -1,0 +1,139 @@
+.bar {
+    margin: 16px 24px;
+    margin-bottom: 0;
+
+    .left,
+    .center,
+    .right {
+        background-color: $color_2;
+
+        border-radius: 10px;
+        margin: 0 10px;
+        border: 3px solid $color_8;
+    }
+
+    .left {
+        padding: 0 24px;
+
+        .battery {
+
+            .icon,
+            .status,
+            .percent {
+                color: $color_6;
+            }
+
+            .icon {
+                font-size: 20px;
+                margin-right: 10px;
+            }
+
+            .percent {
+                font-weight: bold;
+            }
+        }
+
+        .brightness {
+            margin-left: 32px;
+
+            .icon {
+                font-size: 32px;
+                margin-right: 10px;
+                color: $color_8;
+            }
+
+            .slider {
+                min-width: 150px;
+
+                trough {
+                    background: $color_1;
+                    border: 0;
+                    border-radius: 0px;
+                    min-height: 16px;
+
+                    slider {
+                        all: unset;
+                    }
+
+                    highlight {
+                        background: $color_8;
+                        border: 0;
+                        border-radius: 0px;
+                    }
+                }
+            }
+        }
+
+        .volume {
+            margin-left: 32px;
+
+            .icon {
+                font-size: 32px;
+                margin-right: 10px;
+                color: $color_7;
+            }
+
+            .slider {
+                min-width: 150px;
+
+                trough {
+                    background: $color_1;
+                    border: 0;
+                    border-radius: 0px;
+                    min-height: 16px;
+
+                    slider {
+                        all: unset;
+                    }
+
+                    highlight {
+                        background: $color_7;
+                        border: 0;
+                        border-radius: 0px;
+                    }
+                }
+            }
+        }
+
+        .workspaces {
+            .workspace {
+                all: unset;
+                min-height: 10px;
+                min-width: 30px;
+                margin: 0 10px;
+
+                label {
+                    font-size: 32px;
+                    color: $color_9;
+
+                    &.focus {
+                        color: $color_7;
+                    }
+                }
+            }
+        }
+    }
+
+    .center {
+        padding: 8px 48px;
+    }
+
+    .right {
+        padding: 0 24px;
+
+        .network {
+            .icon {
+                all: unset;
+                margin-right: 16px;
+                font-size: 32px;
+                color: $color_4;
+            }
+
+            label {
+                color: $color_4;
+                font-weight: bold;
+                margin-right: 32px;
+            }
+        }
+    }
+}

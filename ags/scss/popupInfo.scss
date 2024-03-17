@@ -1,0 +1,34 @@
+.popupInfo {
+    margin: 32px;
+
+    .notifications {
+
+        .notification {
+            padding-left: 24px;
+            padding-right: 32px;
+            padding-top: 16px;
+            padding-bottom: 16px;
+            border-radius: 1000px;
+            background-color: $color_2;
+            border: 3px solid $color_8;
+            min-width: 450px;
+
+            .icon label {
+                font-size: 64px;
+                margin-right: 32px;
+            }
+
+            .title {
+                font-weight: bold;
+            }
+
+            .body {}
+
+            .actions {
+                .action_button {
+                    all: unset;
+                }
+            }
+        }
+    }
+}

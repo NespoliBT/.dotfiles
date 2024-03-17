@@ -12,7 +12,9 @@
             (python310.withPackages(ps: with ps; [
                 requests
                 pygame
+                numpy
             ]))
+            openjdk19
             firefox
             tree
             git
@@ -21,7 +23,7 @@
             zsh
             eza
             bat
-            eww-wayland
+            eww
             rofi
             hyprpaper
             pfetch
@@ -34,19 +36,27 @@
             spotify
             playerctl
             libnotify
-            mako
             vlc
             binutils
             bison
             neovim
-	          nodejs
+	    nodejs
             yarn
             brightnessctl
             gnumake
             xsel
-	          killall
+	    killall
             os-prober
 	    distrobox
+            obsidian
+            linuxKernel.packages.linux_6_1.cpupower
+            notion-app-enhanced
+            gimp
+            minecraft
+            gum
+            swww
+            sassc
+            inotify-tools
         ];
     };
 
