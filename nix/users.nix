@@ -1,71 +1,87 @@
 # Users
 
-{pkgs, ...}:
+{ pkgs, ... }:
 
 {
-    users.users.nespoli = {
-        isNormalUser = true;
-        extraGroups = [ "wheel" "docker" ];
-        shell = pkgs.zsh;
+  users.users.nespoli = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" "docker" "networkmanager" ];
+    shell = pkgs.zsh;
 
-        packages = with pkgs; [
-            (python310.withPackages(ps: with ps; [
-                requests
-                pygame
-                numpy
-            ]))
-            openjdk19
-            firefox
-            tree
-            git
-            kitty
-            vscode
-            zsh
-            eza
-            bat
-            eww
-            rofi
-            hyprpaper
-            pfetch
-            pywal
-            python3
-            pavucontrol
-            socat
-            jq
-            telegram-desktop
-            spotify
-            playerctl
-            libnotify
-            vlc
-            binutils
-            bison
-            neovim
-	    nodejs
-            yarn
-            brightnessctl
-            gnumake
-            xsel
-	    killall
-            os-prober
-	    distrobox
-            obsidian
-            linuxKernel.packages.linux_6_1.cpupower
-            notion-app-enhanced
-            gimp
-            minecraft
-            gum
-            swww
-            sassc
-            inotify-tools
-        ];
-    };
-
-    # System packages
-    environment.systemPackages = with pkgs; [
-        vim
-        wget
+    packages = with pkgs; [
+      (python311.withPackages
+        (ps: with ps; [ requests pygame python-nmap pip ]))
+      firefox
+      tree
+      git
+      kitty
+      zsh
+      eza
+      bat
+      eww
+      rofi
+      hyprpaper
+      pfetch
+      pywal
+      pavucontrol
+      socat
+      jq
+      telegram-desktop
+      spotify
+      playerctl
+      libnotify
+      vlc
+      binutils
+      bison
+      neovim
+      nodejs
+      yarn
+      brightnessctl
+      gnumake
+      xsel
+      killall
+      os-prober
+      obsidian
+      linuxKernel.packages.linux_6_1.cpupower
+      gimp
+      gum
+      swww
+      sassc
+      inotify-tools
+      steam
+      xwayland
+      gdb
+      hyprlock
+      hypridle
+      bun
+      sshuttle
+      hyprcursor
+      grim
+      slurp
+      nmap
+      wl-clipboard
+      adbfs-rootless
+      android-tools
+      glib
+      neofetch
+      alsa-utils
+      zip
+      unzip
+      vim
+      openocd
+      pulseaudio
+      nixfmt-classic
+      ags
+      astal.astal3
+      astal.io
+      astal.battery
+      astal.network
+      astal.wireplumber
+      astal.hyprland
+      sass
+      ayugram-desktop
     ];
-
-    # Shame
-    nixpkgs.config.allowUnfree = true;
+  };
+  # Shame
+  nixpkgs.config.allowUnfree = true;
 }

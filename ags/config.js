@@ -1,9 +1,11 @@
 import App from "resource:///com/github/Aylur/ags/app.js";
 import Notifications from 'resource:///com/github/Aylur/ags/service/notifications.js';
 import { Bar } from "./widgets/bar.js"
+import { Sidebar } from "./widgets/sidebar.js"
 import { FullInfo } from "./widgets/fullInfo.js"
 import { PopupInfo } from "./widgets/popupInfo.js"
 import { ThemeChanger } from "./widgets/themeChanger.js";
+import { AppLauncher } from "./widgets/apps.js";
 
 const getThemes = () => {
     const themes = Utils.exec(`ls ${App.configDir}/themes`).split("\n");
@@ -29,7 +31,6 @@ const getThemes = () => {
 
 Utils.subprocess([
     'inotifywait',
-    '--recursive',
     '--event', 'create,modify',
     '-m', App.configDir + '/scss',
 ], () => {
@@ -39,13 +40,19 @@ Utils.subprocess([
     App.applyCss(`${App.configDir}/style.css`);
 });
 
+
+App.applyCss(`${App.configDir}/style.css`);
+Utils.exec(`sassc ${App.configDir}/scss/main.scss ${App.configDir}/style.css`);
+
 const themes = getThemes()
 
 let windows = [
     Bar(),
+    Sidebar(),
     FullInfo(),
     PopupInfo(),
-    ThemeChanger(themes)
+    ThemeChanger(themes),
+    AppLauncher(),
 ]
 
 App.config({

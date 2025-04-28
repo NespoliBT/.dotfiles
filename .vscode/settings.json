@@ -1,3 +1,12 @@
 {
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": true,
+    "markdown": true,
+    "scminput": false,
+    "yaml": true,
+    "php": true,
+    "lua": true
+  }
 }

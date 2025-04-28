@@ -7,8 +7,6 @@ import {
 
 const notifications = await Service.import("notifications")
 
-notifications.popupTimeout = 10000;
-
 function NotificationIcon(n) {
     console.log(n.appName);
     const iconMap = {

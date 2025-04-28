@@ -1,0 +1,27 @@
+@use "variables.scss" as *;
+
+.Notification {
+    .revealer {
+        padding: 16px;
+
+        .notification {
+            background-color: $color_2;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0px 0px 16px #00000060;
+
+            .title {
+                margin-bottom: 16px;
+                padding: 0;
+                font-size: 24px;
+                font-weight: bold;
+                color: $color_8;
+            }
+
+            .body {
+                padding: 0;
+                color: $color_9;
+            }
+        }
+    }
+}

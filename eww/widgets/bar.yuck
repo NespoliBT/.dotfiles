@@ -37,7 +37,7 @@
 					
 					(label
 						:class "icon"
-						:text "${battery-status.out}"
+						:text "${battery-status.gov}"
 						:halign "end"
 					)
 					(label

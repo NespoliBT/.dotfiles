@@ -1,0 +1,28 @@
+@use "variables.scss" as *;
+@use "sass:map";
+
+$colors: (
+    1: $color_1,
+    2: $color_2,
+    3: $color_3,
+    4: $color_4,
+    5: $color_5,
+    6: $color_6,
+    7: $color_7,
+    8: $color_8,
+    9: $color_9,
+);
+
+
+.titleEl {
+    font-size: 24px;
+    font-weight: 700;
+    font-family: Pacifico;
+    padding: 16px 32px;
+
+    @for $i from 1 through 9 {
+        &.color_#{$i} {
+            color: map.get($colors, $i);
+        }
+    }
+}

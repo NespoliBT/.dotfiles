@@ -1,0 +1,74 @@
+@use "variables.scss" as *;
+
+.SideBar {
+    .revealer {
+        padding: 32px;
+
+        .sidebar {
+            background-color: $color_2;
+            padding: 32px;
+            min-width: 500px;
+            border-radius: 16px;
+            box-shadow: 0px 0px 16px #00000060;
+
+            .profile {
+                .image {
+                    min-width: 500px;
+                    min-height: 200px;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    border-radius: 16px;
+                    box-shadow: 0px 0px 8px #00000060;
+                }
+            }
+
+            .titleEl {
+                margin-bottom: 32px;
+                padding: 0;
+            }
+
+            .divider {
+                border-radius: 16px;
+                background-color: $color_4;
+                min-height: 5px;
+                margin: 16px 0;
+            }
+
+            .networkList {
+                all: unset;
+
+                * {
+                    all: unset;
+                }
+
+                .network {
+                    padding: 16px 32px;
+                    margin: 8px;
+                    border-radius: 16px;
+                    background-color: $color_1;
+                    opacity: 0.3;
+
+                    &:hover {
+                        opacity: 1;
+                    }
+
+                    &.active {
+                        opacity: 1;
+                        box-shadow: 0px 0px 4px #00000060;
+                        border: 2px solid $color_4;
+                    }
+
+
+                    .name {
+                        color: $color_9;
+                    }
+
+                    .icon {
+                        color: $color_9;
+                    }
+                }
+            }
+        }
+    }
+}

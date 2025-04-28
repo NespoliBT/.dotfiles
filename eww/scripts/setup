@@ -6,7 +6,7 @@
 declare -a programs=(
     "firefox"
     "telegram-desktop"
-    "spotify"
+    "LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify"
 )
 
 # open programs

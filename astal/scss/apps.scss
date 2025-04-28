@@ -1,0 +1,40 @@
+@use "variables.scss" as *;
+
+.Apps {
+    * {
+        all: unset;
+    }
+
+    .revealer {
+
+        .appsContainer {
+            background-color: $color_2;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0px 0px 16px #00000060;
+
+            .scrollable {
+
+                .apps {
+
+
+                    .app {
+                        background-color: $color_1;
+                        border-radius: 16px;
+                        padding: 16px;
+                        margin-bottom: 16px;
+
+                        .icon {
+                            font-size: 32px;
+                            margin-right: 16px;
+                        }
+
+                        .name {
+                            font-size: 24px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

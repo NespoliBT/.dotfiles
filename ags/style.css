@@ -21,10 +21,11 @@
     .bar .left .battery .percent {
       color: #85ba86; }
     .bar .left .battery .icon {
-      font-size: 20px;
-      margin-right: 10px; }
+      font-size: 22px; }
     .bar .left .battery .percent {
-      font-weight: bold; }
+      margin-left: 10px;
+      font-weight: bold;
+      font-size: 18px; }
     .bar .left .brightness {
       margin-left: 32px; }
       .bar .left .brightness .icon {
@@ -170,6 +171,47 @@
           margin: 8px; }
           .fullInfo .center .players .halfPlayer .commands .button label {
             font-size: 32px; }
+    .fullInfo .center .connections {
+      margin: 0 64px; }
+      .fullInfo .center .connections .title {
+        font-family: Pacifico;
+        font-size: 3rem;
+        background-color: #23253C;
+        padding: 16px 64px;
+        border-radius: 16px;
+        margin-bottom: 32px;
+        color: #63aec0; }
+      .fullInfo .center .connections .connectionsContainer button {
+        all: unset;
+        padding: 16px 32px;
+        background-color: #23253C;
+        margin: 8px 0;
+        border-radius: 8px; }
+        .fullInfo .center .connections .connectionsContainer button.selected {
+          background-color: #85ba86; }
+          .fullInfo .center .connections .connectionsContainer button.selected label {
+            color: #131421;
+            font-weight: bold; }
+    .fullInfo .center .phoneStatus {
+      background-color: #23253C;
+      padding: 16px 32px 32px 32px;
+      border-radius: 16px; }
+      .fullInfo .center .phoneStatus .title {
+        font-family: 'Pacifico';
+        font-size: 40px;
+        color: #63aec0;
+        margin-bottom: 16px; }
+      .fullInfo .center .phoneStatus .statusButton {
+        all: unset; }
+        .fullInfo .center .phoneStatus .statusButton label {
+          padding: 8px 0;
+          color: #131421;
+          font-size: 24px;
+          border-radius: 16px; }
+          .fullInfo .center .phoneStatus .statusButton label.active {
+            background-color: #85ba86; }
+          .fullInfo .center .phoneStatus .statusButton label.inactive {
+            background-color: #dd83a0; }
 
 .popupInfo {
   margin: 32px; }
@@ -178,7 +220,7 @@
     padding-right: 32px;
     padding-top: 16px;
     padding-bottom: 16px;
-    border-radius: 1000px;
+    border-radius: 16px;
     background-color: #23253C;
     border: 3px solid #fec262;
     min-width: 450px; }
@@ -208,3 +250,102 @@
     border: 4px solid #fec262; }
     .themeChanger .container .list .row .theme .image {
       border-radius: 16px; }
+
+.sidebar {
+  background-image: linear-gradient(90deg, #131421 50%, transparent);
+  border: none; }
+  .sidebar .top .connections {
+    margin: 32px; }
+    .sidebar .top .connections .title {
+      font-family: Pacifico;
+      font-size: 2.5rem;
+      background-color: #131421;
+      padding: 8px 60px;
+      border-radius: 16px;
+      margin-bottom: 16px;
+      margin-top: 8px;
+      color: #63aec0; }
+    .sidebar .top .connections .connectionsContainer button {
+      all: unset;
+      padding: 12px 32px;
+      background-color: #131421;
+      margin: 4px 0;
+      border-radius: 8px; }
+      .sidebar .top .connections .connectionsContainer button:hover {
+        background-color: rgba(133, 186, 134, 0.8);
+        transition: .2s; }
+        .sidebar .top .connections .connectionsContainer button:hover label {
+          color: #131421; }
+      .sidebar .top .connections .connectionsContainer button.selected {
+        background-color: #85ba86; }
+        .sidebar .top .connections .connectionsContainer button.selected label {
+          color: #131421;
+          font-weight: bold; }
+  .sidebar .bottom .players {
+    margin: 16px; }
+    .sidebar .bottom .players .fullPlayer {
+      background-color: #23253C;
+      box-shadow: 0 0 20px -10px black;
+      padding: 0px;
+      border-radius: 16px; }
+      .sidebar .bottom .players .fullPlayer .cover {
+        background-size: cover;
+        background-position: center;
+        min-height: 100px;
+        min-width: 400px;
+        border: 4px solid #fec262;
+        border-radius: 16px;
+        box-shadow: inset 0 0 5px black; }
+        .sidebar .bottom .players .fullPlayer .cover .info {
+          background: rgba(0, 0, 0, 0.5);
+          padding: 20px;
+          border-radius: 16px; }
+          .sidebar .bottom .players .fullPlayer .cover .info .title {
+            font-weight: bold; }
+          .sidebar .bottom .players .fullPlayer .cover .info .author {
+            margin-top: 16px; }
+      .sidebar .bottom .players .fullPlayer .commands {
+        margin-top: 0px;
+        margin-left: 64px;
+        margin-right: 64px; }
+        .sidebar .bottom .players .fullPlayer .commands .button {
+          all: unset;
+          padding: 8px;
+          margin: 8px;
+          border-radius: 16px;
+          min-height: 50px;
+          min-width: 50px;
+          border-radius: 50px;
+          transition: .2s; }
+          .sidebar .bottom .players .fullPlayer .commands .button:hover {
+            background-color: #131421; }
+          .sidebar .bottom .players .fullPlayer .commands .button label {
+            font-size: 40px; }
+    .sidebar .bottom .players .halfPlayer {
+      background-color: #23253C;
+      margin-bottom: 16px;
+      padding: 16px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px -10px black; }
+      .sidebar .bottom .players .halfPlayer .cover {
+        min-width: 200px;
+        min-height: 200px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 8px;
+        border: 4px solid #fec262;
+        box-shadow: inset 0 0 5px black; }
+      .sidebar .bottom .players .halfPlayer .info {
+        padding: 16px; }
+        .sidebar .bottom .players .halfPlayer .info .title {
+          font-weight: 600; }
+        .sidebar .bottom .players .halfPlayer .info .author {
+          margin-top: 8px; }
+      .sidebar .bottom .players .halfPlayer .commands {
+        margin: 0 32px; }
+        .sidebar .bottom .players .halfPlayer .commands .button {
+          all: unset;
+          padding: 8px;
+          margin: 8px; }
+          .sidebar .bottom .players .halfPlayer .commands .button label {
+            font-size: 32px; }

@@ -128,5 +128,71 @@
                 }
             }
         }
+
+        .connections {
+            margin: 0 64px;
+
+            .title {
+                font-family: Pacifico;
+                font-size: 3rem;
+                background-color: $color_2;
+                padding: 16px 64px;
+                border-radius: 16px;
+                margin-bottom: 32px;
+                color: $color_4;
+            }
+
+            .connectionsContainer {
+                button {
+                    all: unset;
+                    padding: 16px 32px;
+                    background-color: $color_2;
+                    margin: 8px 0;
+                    border-radius: 8px;
+
+                    &.selected {
+                        background-color: $color_6;
+
+                        label {
+                            color: $color_1;
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
+
+        .phoneStatus {
+            background-color: $color_2;
+            padding: 16px 32px 32px 32px;
+            border-radius: 16px;
+
+            .title {
+                font-family: 'Pacifico';
+                font-size: 40px;
+                color: $color_4;
+                margin-bottom: 16px;
+            }
+
+            .statusButton {
+                all: unset;
+
+                label {
+                    padding: 8px 0;
+                    color: $color_1;
+                    font-size: 24px;
+                    border-radius: 16px;
+
+                    &.active {
+                        background-color: $color_6;
+                    }
+
+                    &.inactive {
+                        background-color: $color_3;
+                    }
+                }
+
+            }
+        }
     }
 }

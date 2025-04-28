@@ -67,3 +67,11 @@ fi
 alias ls="exa --icons"
 alias cat="bat"
 alias ip="ip -c"
+alias note="cd ~/note&&vim"
+alias ioquandosicasa="sshuttle -r casaos@nespolibt.duckdns.org 0.0.0.0/0"
+
+#
+## Autorun Hyprland
+#if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+#    dbus-run-session Hyprland
+#fi

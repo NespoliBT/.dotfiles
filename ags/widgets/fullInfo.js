@@ -7,10 +7,12 @@ import {
 import { DateM } from '../modules/date.js';
 import { IP } from '../modules/network.js';
 import { Players } from '../modules/music.js';
+import { Connections } from '../modules/connections.js';
+import { PhoneStatus } from '../modules/phone.js';
 
 const Motivation = () => Label({
     className: "title",
-    label: "~ Che vita grama ~", // TODO 
+    label: "~ Porco Nettuno ~",
 })
 
 const Top = () => Box({
@@ -27,7 +29,9 @@ const Top = () => Box({
 const Center = () => Box({
     className: "center",
     children: [
-        Players()
+        Players(),
+        Connections(),
+        PhoneStatus()
     ]
 })
 

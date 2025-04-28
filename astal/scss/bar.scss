@@ -1,0 +1,194 @@
+@use "variables.scss" as *;
+
+.Bar {
+
+    .revealer {
+        padding: 16px;
+
+        .centerbox {
+            padding: 16px;
+            border-radius: 16px;
+            background-color: $color_2;
+            box-shadow: 0px 0px 16px #00000060;
+
+            .subbox {
+                &.left {
+                    background-color: $color_1;
+                    padding: 32px;
+                    border-radius: 16px;
+                    min-width: 200px;
+                    box-shadow: 0px 0px 16px #00000060;
+
+                    .battery {
+                        margin-bottom: 16px;
+
+                        icon {
+                            color: $color_6;
+                            font-size: 24px;
+                            margin-right: 8px;
+                        }
+
+                        trough {
+                            background: $color_2;
+                            border: 0;
+                            border-radius: 0px;
+                            min-height: 16px;
+                            border-radius: 16px;
+                            padding: 1px;
+                        }
+
+                        block {
+                            all: unset;
+                            border: 0;
+                            border-radius: 16px;
+                            background-color: $color_6;
+
+                            &.empty {
+                                background: $color_2;
+                            }
+                        }
+
+                        levelbar {
+                            all: unset;
+                        }
+                    }
+
+                    .brightness {
+                        margin-bottom: 16px;
+
+                        label {
+                            color: $color_8;
+                            font-size: 24px;
+                            margin-right: 20px;
+                        }
+
+                        trough {
+                            background: $color_2;
+                            border: 0;
+                            border-radius: 0px;
+                            min-height: 16px;
+                            border-radius: 16px;
+                        }
+
+                        highlight {
+                            background: $color_8;
+                            border: 0;
+                            border-radius: 16px;
+                        }
+
+                        slider {
+                            all: unset;
+                        }
+
+                        scale {
+                            all: unset;
+                        }
+                    }
+
+                    .volume {
+                        icon {
+                            color: $color_7;
+                            font-size: 24px;
+                            margin-right: 8px;
+                        }
+
+                        trough {
+                            background: $color_2;
+                            border: 0;
+                            border-radius: 0px;
+                            min-height: 16px;
+                            border-radius: 16px;
+                        }
+
+                        highlight {
+                            background: $color_7;
+                            border: 0;
+                            border-radius: 16px;
+                        }
+
+                        slider {
+                            all: unset;
+                        }
+
+                        scale {
+                            all: unset;
+                        }
+                    }
+                }
+
+                &.center {
+
+                    .workspaces {
+                        button {
+                            transition: .5s;
+                            all: unset;
+                            background-color: $color_1;
+                            border-radius: 16px;
+                            padding: 16px;
+                            margin-right: 16px;
+                            color: $color_9;
+                            min-height: 40px;
+                            min-width: 40px;
+                            box-shadow: 0px 0px 8px #00000060;
+                            opacity: 0.3;
+                            border: 2px solid transparent;
+
+                            label {
+                                transition: .5s;
+                                font-size: 24px;
+                                margin-right: 8px;
+                            }
+
+                            &.focused {
+                                transition: .5s;
+                                opacity: 1;
+                                border: 2px solid $color_4;
+                            }
+
+                            &:hover {
+                                opacity: 1;
+
+                                label {
+                                    font-size: 32px;
+                                }
+                            }
+                        }
+                    }
+
+                }
+
+                &.right {
+                    background-color: transparent;
+                    border: 0;
+                    padding: 0;
+                    border-radius: 0px;
+
+                    .sentences {
+                        margin-bottom: 32px;
+
+                        label {
+                            color: $color_9;
+                            border-bottom: 2px solid $color_8;
+                            font-size: 24px;
+                            padding: 16px;
+                        }
+                    }
+
+                    .date {
+                        all: unset;
+                        background-color: $color_1;
+                        padding: 16px 32px;
+                        border-radius: 16px;
+                        box-shadow: 0px 0px 16px #00000060;
+
+                        .text {
+                            color: $color_9;
+                            font-size: 24px;
+                            margin-right: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

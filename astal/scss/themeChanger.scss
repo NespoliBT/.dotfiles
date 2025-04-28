@@ -1,0 +1,50 @@
+@use "variables.scss" as *;
+
+.ThemeChanger {
+    .revealer {
+        padding: 32px;
+
+        .themeChanger {
+            background-color: $color_2;
+            box-shadow: 0px 0px 16px #00000060;
+            border-radius: 16px;
+            padding: 0px 128px 32px 128px;
+
+            .titleEl {
+                padding: 32px 64px;
+            }
+
+            .themes {
+                .theme {
+                    margin: 32px;
+
+                    .image {
+                        all: unset;
+                        $height : 216px;
+                        $width : 384px;
+                        min-height: $height;
+                        min-width: $width;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        border-radius: 16px;
+                        box-shadow: 0px 0px 15px -5px #000000;
+                    }
+
+                    .colors {
+                        margin-top: -24px;
+                        border-radius: 8px;
+                        padding: 8px;
+
+                        .color {
+                            min-width: 32px;
+                            min-height: 32px;
+                            margin: 4px;
+                            border-radius: 4px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
