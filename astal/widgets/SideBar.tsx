@@ -4,6 +4,10 @@ import { Variable, bind } from "astal";
 import { exec, execAsync } from "astal/process";
 import { readFile, monitorFile } from "astal/file";
 import Network from "gi://AstalNetwork";
+import GLib from "gi://GLib";
+
+const HOME = GLib.getenv("HOME");
+const appDir = `${HOME}/.dotfiles/astal`;
 
 const NetworksEl = () => {
   const network = Network.get_default();
@@ -99,11 +103,13 @@ const NetworksEl = () => {
 
 const Profile = () => {
   const currentTheme = Variable(
-    readFile("consts/theme.txt").split("\n")[0].trim()
+    readFile(`${appDir}/consts/theme.txt`).split("\n")[0].trim()
   );
 
-  monitorFile("consts/theme.txt", () => {
-    currentTheme.set(readFile("consts/theme.txt").split("\n")[0].trim());
+  monitorFile(`${appDir}/consts/theme.txt`, () => {
+    currentTheme.set(
+      readFile(`${appDir}/consts/theme.txt`).split("\n")[0].trim()
+    );
   });
 
   return (
@@ -112,7 +118,7 @@ const Profile = () => {
         className="image"
         css={bind(currentTheme).as(
           (t) => `
-                background-image: url("themes/${t}/img.jpg");`
+                background-image: url("${appDir}/themes/${t}/img.jpg");`
         )}
       />
     </box>

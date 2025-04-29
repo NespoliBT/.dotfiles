@@ -12,22 +12,27 @@ const Search = () => {
   const handleType = (self: any) => {
     const text = self.text;
 
-    if (text.length > 0) {
-      APP_LIST.set(apps.fuzzy_query(text));
-    } else {
+    if (self.text.length != 0) {
+      const appList = apps.fuzzy_query(text).slice(0, 5);
+      APP_LIST.set(appList);
+      SELECTED_APP.set(appList[0].entry);
+    }
+
+    if (self.text.length == 0) {
       APP_LIST.set([]);
+      SELECTED_APP.set("asdasdsad");
     }
   };
   const handleActivate = (self: any) => {
     const text = self.text;
 
     if (text.length > 0) {
-      for (const app of apps.fuzzy_query(text)) {
-        print(app.name);
-        if (app.executable) {
-          app.launch();
-          APP_LIST.set([]);
-        }
+      const app = apps[SELECTED_APP.get()];
+
+      if (app) {
+        exec(app.command);
+        self.text = "";
+        APP_LIST.set([]);
       }
     }
   };

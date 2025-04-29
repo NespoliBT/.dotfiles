@@ -4,8 +4,12 @@ import { timeout, Variable, bind } from "astal";
 import { exec, execAsync } from "astal/process";
 import { writeFile } from "astal/file";
 
+import GLib from "gi://GLib";
+
+const HOME = GLib.getenv("HOME");
+const appDir = `${HOME}/.dotfiles/astal`;
+
 const setTheme = (t) => {
-  const appDir = exec("pwd").trim();
   const hyprPath = `${appDir}/../hypr`;
   execAsync(
     `swww img ${t.background} --transition-type wave --transition-angle 180`
@@ -30,8 +34,6 @@ const setTheme = (t) => {
 };
 
 const getThemes = () => {
-  const appDir = exec("pwd").trim();
-
   const themes = exec(`ls ${appDir}/themes`).split("\n");
   const themesMap = themes.map((theme) => {
     const path = `${appDir}/themes/${theme}`;

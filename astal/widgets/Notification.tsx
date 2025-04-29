@@ -12,7 +12,7 @@ const Notification = (monitor = 0) => {
 
   notifd.connect("notified", (_, id) => {
     const n = notifd.get_notification(id);
-    print(n.summary, n.body);
+
     lastNotification.set(n);
     isHover.set(true);
     setTimeout(() => {

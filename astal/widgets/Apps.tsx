@@ -63,10 +63,12 @@ const AppsWindow = () => {
                 vertical={Gtk.Orientation.VERTICAL}
                 valign={Gtk.Align.START}
               >
-                {bind(APP_LIST).as((apps) => {
-                  return apps.map((app) => (
+                {bind(SELECTED_APP).as(() => {
+                  return APP_LIST.get().map((app) => (
                     <button
-                      className="app"
+                      className={`app ${
+                        SELECTED_APP.get() == app.entry ? "selected" : ""
+                      }`}
                       hexpand
                       onClick={() => {
                         APP_LIST.set([]);

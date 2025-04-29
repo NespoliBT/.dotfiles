@@ -71,13 +71,6 @@
       openocd
       pulseaudio
       nixfmt-classic
-      ags
-      astal.astal3
-      astal.io
-      astal.battery
-      astal.network
-      astal.wireplumber
-      astal.hyprland
       sass
       ayugram-desktop
     ];

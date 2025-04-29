@@ -7,8 +7,11 @@ import Wp from "gi://AstalWp";
 import Network from "gi://AstalNetwork";
 import Hyprland from "gi://AstalHyprland";
 import Search from "./Search";
+import GLib from "gi://GLib";
 
-const sentences = readFile(`consts/cits.txt`).split("\n");
+const HOME = GLib.getenv("HOME");
+const appDir = `${HOME}/.dotfiles/astal`;
+const sentences = readFile(`${appDir}/consts/cits.txt`).split("\n");
 
 const BatteryEl = () => {
   const bat = Battery.get_default();
@@ -231,6 +234,32 @@ const Bar = (monitor = 0) => {
       exclusivity={Astal.Exclusivity.NONE}
       anchor={BOTTOM | LEFT | RIGHT}
       keymode={Astal.Keymode.ON_DEMAND}
+      onKeyPressEvent={(self, event) => {
+        const key = event.get_keyval()[1];
+        const apps = APP_LIST.get();
+        const selected = SELECTED_APP.get();
+
+        if (apps.length > 0) {
+          const index = apps.findIndex((app: any) => app.entry == selected);
+          switch (key) {
+            case 65362: // Up arrow
+              let prevIndex = (index - 1 + apps.length) % apps.length;
+              if (prevIndex < 0) {
+                prevIndex = apps.length - 1;
+              }
+              SELECTED_APP.set(apps[prevIndex].entry);
+              break;
+
+            case 65364: // Down arrow
+              let nextIndex = (index + 1) % apps.length;
+              if (nextIndex >= apps.length) {
+                nextIndex = 0;
+              }
+              SELECTED_APP.set(apps[nextIndex].entry);
+              break;
+          }
+        }
+      }}
     >
       <eventbox
         onHover={() => isHover.set(true)}

@@ -65,7 +65,7 @@ fi
 #
 ## Aliases
 alias ls="exa --icons"
-alias cat="bat"
+alias cat="bat -p"
 alias ip="ip -c"
 alias note="cd ~/note&&vim"
 alias ioquandosicasa="sshuttle -r casaos@nespolibt.duckdns.org 0.0.0.0/0"
