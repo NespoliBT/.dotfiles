@@ -1,5 +1,0 @@
-(include "./def/poll.yuck")
-(include "./widgets/dashboard.yuck")
-(include "./widgets/bar.yuck")
-(include "./widgets/sidebar.yuck")
-(include "./widgets/theme_selector.yuck")

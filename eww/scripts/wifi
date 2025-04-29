@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-iwgetid -r
-
-exit

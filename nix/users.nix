@@ -73,6 +73,7 @@
       nixfmt-classic
       sass
       ayugram-desktop
+      onefetch
     ];
   };
   # Shame

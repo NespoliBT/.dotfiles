@@ -35,18 +35,6 @@ export VISUAL=code
 export EDITOR=vim
 
 #
-## NVM Configs
-[ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
-if [ -d "/usr/share/nvm" ]; then
-  source /usr/share/nvm/nvm.sh
-  source /usr/share/nvm/bash_completion
-  source /usr/share/nvm/install-nvm-exec
-fi
-
-#
 ## Set color theme
 COLORSCHEMEDIR="$HOME/.cache/wal/"
 if [ -d "$COLORSCHEMEDIR" ] && [ "$TERM_PROGRAM" != "vscode" ]; then
