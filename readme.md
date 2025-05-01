@@ -17,7 +17,7 @@ This config is based on the following:
 The main premise of this setup is to have NixOS manage everything. Obviously, I have no idea what I'm doing.
 
 ## 👀 Structure
-This is probably going to chage.
+This is probably going to change.
 
 ### ./astal/
 This is where the Astal config lives. Basically this manager all the widgets, the fancy stuff on the screen. I dont really use it but it's super fun to develop. Running this should be as simple as running `nix run` or entering the dev shell with `nix develop` and then running `ags run app.ts`
@@ -27,4 +27,7 @@ The window managing. Not much to say here. I use the default config with some tw
 
 ### ./nixos/
 The fun part. I copied most of this from strangers on the internet. Basically the configuration starts from the `flake.nix` file. Here I import the system configuration and the modules I need. 
+
+### ./nix/
+The old config. I am scared of deleting it.
 
