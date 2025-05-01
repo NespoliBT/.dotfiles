@@ -23,12 +23,8 @@ antigen apply
 #
 ## Exports
 export PATH=$HOME/.local/share/bin:/usr/local/bin:$PATH
-export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
-export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
 
 export ZSH="$HOME/.oh-my-zsh"
-export GEM_HOME="$HOME/.gem"
-export NVM_DIR="$HOME/.nvm"
 
 export TERM=xterm
 export VISUAL=code

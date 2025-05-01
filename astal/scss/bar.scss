@@ -58,8 +58,8 @@
 
                         label {
                             color: $color_8;
-                            font-size: 24px;
-                            margin-right: 20px;
+                            font-size: 32px;
+                            margin-right: 16px;
                         }
 
                         trough {
@@ -89,7 +89,7 @@
                         icon {
                             color: $color_7;
                             font-size: 24px;
-                            margin-right: 8px;
+                            margin-right: 16px;
                         }
 
                         trough {
@@ -135,8 +135,7 @@
 
                             label {
                                 transition: .5s;
-                                font-size: 24px;
-                                margin-right: 8px;
+                                font-size: 32px;
                             }
 
                             &.focused {

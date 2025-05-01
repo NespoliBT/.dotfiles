@@ -25,7 +25,7 @@ const setTheme = (t) => {
     print(err)
   );
   execAsync(`cp ${t.scss} ${appDir}/scss/variables.scss`).then(() => {
-    exec("sass ./scss/main.scss /tmp/style.css");
+    exec(`sass ${appDir}/scss/main.scss /tmp/style.css`);
 
     App.apply_css("/tmp/style.css");
   });
