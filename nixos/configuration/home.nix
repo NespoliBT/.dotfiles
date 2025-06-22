@@ -29,5 +29,6 @@
     swww
     wl-clipboard
     slurp
+    steam
   ];
 }
