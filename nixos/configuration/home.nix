@@ -3,6 +3,7 @@
     ./dotfiles/hyprland.nix
     ./dotfiles/zsh.nix
     ./dotfiles/gtk.nix
+    ./dotfiles/vim.nix
     # --
   ];
 

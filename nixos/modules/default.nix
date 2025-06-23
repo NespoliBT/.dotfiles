@@ -4,8 +4,8 @@
     ./pipewire.nix
     ./hyprland.nix
     ./zsh.nix
+    ./flatpak.nix
     ./bluetooth.nix
-    ./flatkpak.nix
     # --
   ];
 
