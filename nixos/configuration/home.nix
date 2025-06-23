@@ -13,7 +13,6 @@
   home.stateVersion = "24.05";
 
   home.packages = with pkgs; [
-    vim
     git
     brightnessctl
     kitty
