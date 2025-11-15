@@ -1,7 +1,18 @@
 { config, pkgs, ... }: {
-  programs.vim = {
+  programs.neovim = {
     enable = true;
-    plugins = with pkgs.vimPlugins; [ vim-airline ];
-    settings = { ignorecase = true; };
+    plugins = with pkgs.vimPlugins; [
+      vim-airline
+      nerdtree
+      emmet-vim
+      gitgutter
+      commentary
+      vim-be-good
+    ];
+
+    extraConfig = ''
+      set number
+      set ignorecase
+    '';
   };
 }

@@ -14,7 +14,7 @@
       firefox
       tree
       git
-      kitty
+      alacritty
       zsh
       eza
       bat

@@ -28,7 +28,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 export TERM=xterm
 export VISUAL=code
-export EDITOR=vim
+export EDITOR=nvim
 
 #
 ## Set color theme
@@ -51,8 +51,8 @@ fi
 alias ls="exa --icons"
 alias cat="bat -p"
 alias ip="ip -c"
-alias note="cd ~/note&&vim"
 alias ioquandosicasa="sshuttle -r casaos@nespolibt.duckdns.org 0.0.0.0/0"
+alias twitch-live="nix run nixpkgs#wayvnc 0.0.0.0"
 
 #
 ## Autorun Hyprland

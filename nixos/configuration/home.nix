@@ -15,7 +15,7 @@
   home.packages = with pkgs; [
     git
     brightnessctl
-    kitty
+    alacritty
     firefox
     vscode
     rofi
@@ -30,5 +30,12 @@
     wl-clipboard
     slurp
     steam
+    gum
+    grim
+    love
+    tmux
+    jdk
+    obsidian
+    sunsetr
   ];
 }

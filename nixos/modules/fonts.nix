@@ -5,7 +5,7 @@
       fira-code
       noto-fonts
       noto-fonts-cjk-sans
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       proggyfonts
       nerd-fonts.fira-code
       nerd-fonts.droid-sans-mono

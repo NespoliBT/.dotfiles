@@ -4,35 +4,33 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules =
+    [ "nvme" "xhci_pci" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "amdgpu" ];
   boot.extraModulePackages = [ ];
+  boot.loader.grub.configurationLimit = 2;
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/9dbca136-bcf0-4600-a6f2-f75b1a103535";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/9dbca136-bcf0-4600-a6f2-f75b1a103535";
+    fsType = "ext4";
+  };
 
-  
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/BF5A-70A6";
-      fsType = "vfat";
-    };
-hardware.graphics = {
-  enable = true;
-  enable32Bit = true;
-};
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/BF5A-70A6";
+    fsType = "vfat";
+  };
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
 
-
-swapDevices = [ {
+  swapDevices = [{
     device = "/var/lib/swapfile";
-    size = 16*1024;
-  } ];
+    size = 16 * 1024;
+  }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -42,5 +40,6 @@ swapDevices = [ {
   # networking.interfaces.wlp1s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
