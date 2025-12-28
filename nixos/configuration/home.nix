@@ -37,5 +37,6 @@
     jdk
     obsidian
     sunsetr
+    astal.io
   ];
 }

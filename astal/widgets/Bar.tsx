@@ -1,10 +1,11 @@
-import { Astal, Gtk, Gdk, astalify } from "astal/gtk3";
+import { Astal, Gtk, Gdk, astalify, App } from "astal/gtk3";
 import { monitorFile, readFile } from "astal/file";
 import { exec } from "astal/process";
 import { timeout, Variable, bind } from "astal";
 import Battery from "gi://AstalBattery";
 import Wp from "gi://AstalWp";
 import Network from "gi://AstalNetwork";
+import Bluetooth from "gi://AstalBluetooth";
 import Hyprland from "gi://AstalHyprland";
 import Search from "./Search";
 import GLib from "gi://GLib";
@@ -80,17 +81,56 @@ const VolumeEl = () => {
   );
 };
 
+const QuickSettings = () => {
+  const network = Network.get_default();
+  const bluetooth = Bluetooth.get_default();
+
+  return (
+    <box className="quicksettings">
+      <box className="col" vertical={Gtk.Orientation.VERTICAL}>
+        <button
+          onClicked={() => {
+            network.wifi.enabled = !network.wifi.enabled;
+          }}
+          className={bind(network.wifi, "enabled").as((apm) =>
+            apm == true ? "toggle enabled" : "toggle"
+          )}
+          vexpand
+        >
+          <label>
+            {bind(network.wifi, "enabled").as((apm) =>
+              apm == true ? "" : "󰀝"
+            )}
+          </label>
+        </button>
+        <button
+          className={bind(bluetooth, "enabled").as((bt) =>
+            bt == true ? "toggle enabled" : "toggle"
+          )}
+          vexpand
+        >
+          <label></label>
+        </button>
+      </box>
+    </box>
+  );
+};
+
 const Left = () => {
   return (
-    <box
-      className="left subbox"
-      halign={Gtk.Align.START}
-      vertical={Gtk.Orientation.VERTICAL}
-      valign={Gtk.Align.END}
-    >
-      <BatteryEl />
-      <BrightnessEl />
-      <VolumeEl />
+    <box className="left subbox" halign={Gtk.Align.START}>
+      <box
+        className="status"
+        halign={Gtk.Align.START}
+        vertical={Gtk.Orientation.VERTICAL}
+        valign={Gtk.Align.END}
+      >
+        <BatteryEl />
+        <BrightnessEl />
+        <VolumeEl />
+      </box>
+
+      <QuickSettings />
     </box>
   );
 };
@@ -227,37 +267,45 @@ const Bar = (monitor = 0) => {
   const { TOP, LEFT, RIGHT, BOTTOM } = Astal.WindowAnchor;
   const isHover = Variable(false);
 
-  return (
+  const window = (
     <window
+      name="Bar"
       className="Bar"
+      title="Bar"
       gdkmonitor={monitor}
       exclusivity={Astal.Exclusivity.NONE}
       anchor={BOTTOM | LEFT | RIGHT}
       keymode={Astal.Keymode.ON_DEMAND}
+      setup={(self) => {
+        App.add_window(self);
+      }}
       onKeyPressEvent={(self, event) => {
         const key = event.get_keyval()[1];
         const apps = APP_LIST.get();
         const selected = SELECTED_APP.get();
 
-        if (apps.length > 0) {
-          const index = apps.findIndex((app: any) => app.entry == selected);
-          switch (key) {
-            case 65362: // Up arrow
-              let prevIndex = (index - 1 + apps.length) % apps.length;
-              if (prevIndex < 0) {
-                prevIndex = apps.length - 1;
-              }
-              SELECTED_APP.set(apps[prevIndex].entry);
-              break;
+        const index = apps.findIndex((app: any) => app.entry == selected);
+        switch (key) {
+          case 65362: // Up arrow
+            let prevIndex = (index - 1 + apps.length) % apps.length;
+            if (prevIndex < 0) {
+              prevIndex = apps.length - 1;
+            }
+            SELECTED_APP.set(apps[prevIndex]);
+            break;
 
-            case 65364: // Down arrow
-              let nextIndex = (index + 1) % apps.length;
-              if (nextIndex >= apps.length) {
-                nextIndex = 0;
-              }
-              SELECTED_APP.set(apps[nextIndex].entry);
-              break;
-          }
+          case 65364: // Down arrow
+            let nextIndex = (index + 1) % apps.length;
+            if (nextIndex >= apps.length) {
+              nextIndex = 0;
+            }
+            SELECTED_APP.set(apps[nextIndex]);
+            break;
+
+          case 65307: // Escape
+            OPEN_APP_LAUNCHER.set(false);
+            APP_LIST.set([]);
+            break;
         }
       }}
     >
@@ -265,6 +313,7 @@ const Bar = (monitor = 0) => {
         onHover={() => isHover.set(true)}
         onHoverLost={() => {
           isHover.set(false);
+          OPEN_APP_LAUNCHER.set(false);
         }}
       >
         <revealer
@@ -281,6 +330,18 @@ const Bar = (monitor = 0) => {
       </eventbox>
     </window>
   );
+
+  OPEN_APP_LAUNCHER.subscribe((open) => {
+    if (open) {
+      window.set_keymode(Astal.Keymode.EXCLUSIVE);
+      isHover.set(true);
+    } else {
+      window.set_keymode(Astal.Keymode.ON_DEMAND);
+      isHover.set(false);
+    }
+  });
+
+  return window;
 };
 
 export default Bar;

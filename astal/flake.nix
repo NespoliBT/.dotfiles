@@ -24,6 +24,7 @@
           agsPkgs.battery
           agsPkgs.wireplumber
           agsPkgs.network
+          agsPkgs.bluetooth
           agsPkgs.hyprland
           agsPkgs.notifd
           agsPkgs.apps

@@ -67,7 +67,7 @@ const AppsWindow = () => {
                   return APP_LIST.get().map((app) => (
                     <button
                       className={`app ${
-                        SELECTED_APP.get() == app.entry ? "selected" : ""
+                        SELECTED_APP.get().entry == app.entry ? "selected" : ""
                       }`}
                       hexpand
                       onClick={() => {

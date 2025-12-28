@@ -3,115 +3,148 @@
 .Bar {
 
     .revealer {
-        padding: 16px;
+        padding: 32px;
 
         .centerbox {
             padding: 16px;
             border-radius: 16px;
             background-color: $color_2;
-            box-shadow: 0px 0px 16px #00000060;
+            box-shadow: 0px 0px 8px #00000060;
 
             .subbox {
                 &.left {
-                    background-color: $color_1;
-                    padding: 32px;
-                    border-radius: 16px;
-                    min-width: 200px;
-                    box-shadow: 0px 0px 16px #00000060;
+                    .status {
+                        background-color: $color_1;
+                        padding: 32px;
+                        border-radius: 16px;
+                        min-width: 200px;
+                        box-shadow: 0px 0px 16px #00000060;
 
-                    .battery {
-                        margin-bottom: 16px;
 
-                        icon {
-                            color: $color_6;
-                            font-size: 24px;
-                            margin-right: 8px;
-                        }
+                        .battery {
+                            margin-bottom: 16px;
 
-                        trough {
-                            background: $color_2;
-                            border: 0;
-                            border-radius: 0px;
-                            min-height: 16px;
-                            border-radius: 16px;
-                            padding: 1px;
-                        }
+                            icon {
+                                color: $color_6;
+                                font-size: 24px;
+                                margin-right: 8px;
+                            }
 
-                        block {
-                            all: unset;
-                            border: 0;
-                            border-radius: 16px;
-                            background-color: $color_6;
-
-                            &.empty {
+                            trough {
                                 background: $color_2;
+                                border: 0;
+                                border-radius: 0px;
+                                min-height: 16px;
+                                border-radius: 16px;
+                                padding: 1px;
+                            }
+
+                            block {
+                                all: unset;
+                                border: 0;
+                                border-radius: 16px;
+                                background-color: $color_6;
+
+                                &.empty {
+                                    background: $color_2;
+                                }
+                            }
+
+                            levelbar {
+                                all: unset;
                             }
                         }
 
-                        levelbar {
-                            all: unset;
+                        .brightness {
+                            margin-bottom: 16px;
+
+                            label {
+                                color: $color_8;
+                                font-size: 32px;
+                                margin-right: 16px;
+                            }
+
+                            trough {
+                                background: $color_2;
+                                border: 0;
+                                border-radius: 0px;
+                                min-height: 16px;
+                                border-radius: 16px;
+                            }
+
+                            highlight {
+                                background: $color_8;
+                                border: 0;
+                                border-radius: 16px;
+                            }
+
+                            slider {
+                                all: unset;
+                            }
+
+                            scale {
+                                all: unset;
+                            }
+                        }
+
+                        .volume {
+                            icon {
+                                color: $color_7;
+                                font-size: 24px;
+                                margin-right: 16px;
+                            }
+
+                            trough {
+                                background: $color_2;
+                                border: 0;
+                                border-radius: 0px;
+                                min-height: 16px;
+                                border-radius: 16px;
+                            }
+
+                            highlight {
+                                background: $color_7;
+                                border: 0;
+                                border-radius: 16px;
+                            }
+
+                            slider {
+                                all: unset;
+                            }
+
+                            scale {
+                                all: unset;
+                            }
                         }
                     }
 
-                    .brightness {
-                        margin-bottom: 16px;
+                    .quicksettings {
+                        margin-left: 16px;
 
-                        label {
-                            color: $color_8;
-                            font-size: 32px;
-                            margin-right: 16px;
-                        }
-
-                        trough {
-                            background: $color_2;
-                            border: 0;
-                            border-radius: 0px;
-                            min-height: 16px;
-                            border-radius: 16px;
-                        }
-
-                        highlight {
-                            background: $color_8;
-                            border: 0;
-                            border-radius: 16px;
-                        }
-
-                        slider {
+                        .toggle {
                             all: unset;
-                        }
-
-                        scale {
-                            all: unset;
-                        }
-                    }
-
-                    .volume {
-                        icon {
-                            color: $color_7;
-                            font-size: 24px;
-                            margin-right: 16px;
-                        }
-
-                        trough {
-                            background: $color_2;
-                            border: 0;
-                            border-radius: 0px;
-                            min-height: 16px;
+                            background-color: $color_1;
+                            padding: 0 32px;
                             border-radius: 16px;
-                        }
+                            box-shadow: 0px 0px 8px #00000060;
+                            margin-bottom: 16px;
 
-                        highlight {
-                            background: $color_7;
-                            border: 0;
-                            border-radius: 16px;
-                        }
+                            &.enabled {
+                                background: $color_4;
 
-                        slider {
-                            all: unset;
-                        }
+                                label {
+                                    color: $color_1;
+                                }
+                            }
 
-                        scale {
-                            all: unset;
+                            label {
+                                color: $color_9;
+                                font-size: 40px;
+                            }
+
+                            &:last-child {
+                                margin-bottom: 0px;
+                            }
                         }
                     }
                 }

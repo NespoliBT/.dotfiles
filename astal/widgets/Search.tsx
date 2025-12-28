@@ -11,11 +11,12 @@ const Search = () => {
 
   const handleType = (self: any) => {
     const text = self.text;
+    print("Typed:", text);
 
     if (self.text.length != 0) {
       const appList = apps.fuzzy_query(text).slice(0, 5);
       APP_LIST.set(appList);
-      SELECTED_APP.set(appList[0].entry);
+      SELECTED_APP.set(appList[0]);
     }
 
     if (self.text.length == 0) {
@@ -25,14 +26,15 @@ const Search = () => {
   };
   const handleActivate = (self: any) => {
     const text = self.text;
+    const app = SELECTED_APP.get();
 
     if (text.length > 0) {
-      const app = apps[SELECTED_APP.get()];
-
       if (app) {
-        exec(app.command);
+        app.launch();
         self.text = "";
         APP_LIST.set([]);
+        SELECTED_APP.set("none");
+        OPEN_APP_LAUNCHER.set(false);
       }
     }
   };
@@ -45,6 +47,18 @@ const Search = () => {
         hexpand
         halign={Gtk.Align.CENTER}
         widthRequest={500}
+        setup={(self) => {
+          OPEN_APP_LAUNCHER.subscribe((open) => {
+            if (open) {
+              print("Focusing search");
+              self.grab_focus();
+            } else {
+              self.text = "";
+              APP_LIST.set([]);
+              SELECTED_APP.set("none");
+            }
+          });
+        }}
       />
     </box>
   );

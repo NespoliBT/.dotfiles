@@ -130,6 +130,10 @@ const SideBar = (monitor = 0) => {
 
   const isHover = Variable(false);
 
+  OPEN_SIDE_BAR.subscribe((open) => {
+    isHover.set(open);
+  });
+
   return (
     <window
       className="SideBar"
@@ -143,6 +147,7 @@ const SideBar = (monitor = 0) => {
         }}
         onHoverLost={() => {
           isHover.set(false);
+          OPEN_SIDE_BAR.set(false);
         }}
       >
         <revealer

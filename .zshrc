@@ -53,8 +53,10 @@ alias cat="bat -p"
 alias ip="ip -c"
 alias ioquandosicasa="sshuttle -r casaos@nespolibt.duckdns.org 0.0.0.0/0"
 alias twitch-live="nix run nixpkgs#wayvnc 0.0.0.0"
+alias flake-template='f() {
+  cp ~/.dotfiles/nixos/flake_templates/$1.nix ./flake.nix
+};f'
 
-#
 ## Autorun Hyprland
 #if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
 #    dbus-run-session Hyprland
