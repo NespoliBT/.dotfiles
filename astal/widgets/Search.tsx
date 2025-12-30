@@ -11,7 +11,6 @@ const Search = () => {
 
   const handleType = (self: any) => {
     const text = self.text;
-    print("Typed:", text);
 
     if (self.text.length != 0) {
       const appList = apps.fuzzy_query(text).slice(0, 5);
@@ -50,7 +49,6 @@ const Search = () => {
         setup={(self) => {
           OPEN_APP_LAUNCHER.subscribe((open) => {
             if (open) {
-              print("Focusing search");
               self.grab_focus();
             } else {
               self.text = "";

@@ -4,6 +4,7 @@
     ./dotfiles/zsh.nix
     ./dotfiles/gtk.nix
     ./dotfiles/vim.nix
+    ./dotfiles/code/vscodium.nix
     # --
   ];
 
@@ -17,7 +18,6 @@
     brightnessctl
     alacritty
     firefox
-    vscode
     rofi
     nixfmt-classic
     pavucontrol

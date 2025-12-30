@@ -1,0 +1,9 @@
+{
+  "workbench.startupEditor": "none",
+  "workbench.sideBar.location": "right",
+  "workbench.panel.defaultLocation": "left",
+  "workbench.tree.indent": 10,
+
+  "workbench.colorTheme": "Wal",
+  "workbench.iconTheme": "catppuccin-mocha"
+}

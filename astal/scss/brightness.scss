@@ -1,10 +1,10 @@
 @use "variables.scss" as *;
 
-.Volume {
+.Brightness {
     .revealer {
         padding: 32px;
 
-        .volumeContainer {
+        .brightnessContainer {
             background-color: $color_1;
             padding: 32px 64px;
             margin-top: 1200px;
@@ -12,7 +12,7 @@
             box-shadow: 0px 0px 16px #00000080;
 
             icon {
-                color: $color_7;
+                color: $color_8;
                 font-size: 48px;
                 margin-right: 32px;
             }
@@ -26,7 +26,7 @@
             }
 
             highlight {
-                background: $color_7;
+                background: $color_8;
                 border: 0;
                 border-radius: 16px;
             }

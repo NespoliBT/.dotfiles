@@ -17,7 +17,6 @@
         entry = "app.ts";
         gtk4 = false;
 
-        # additional libraries and executables to add to gjs' runtime
         extraPackages = [
           agsPkgs.astal3
           agsPkgs.io
@@ -29,6 +28,7 @@
           agsPkgs.notifd
           agsPkgs.apps
           agsPkgs.battery
+          agsPkgs.mpris
           # pkgs.fzf
         ];
       };

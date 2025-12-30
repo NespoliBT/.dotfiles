@@ -1,0 +1,13 @@
+{
+  "liveServer.settings.donotShowInfoMsg": true,
+
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": true,
+    "markdown": false,
+    "scminput": false,
+    "yaml": true,
+    "php": true,
+    "lua": true
+  }
+}

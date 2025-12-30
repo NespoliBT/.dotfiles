@@ -1,0 +1,53 @@
+@use "variables.scss" as *;
+
+.mediaControl {
+  margin-top: 16px;
+
+  .mediaPlayer {
+    .coverArt {
+      min-width: 100px;
+      min-height: 200px;
+      background-size: cover;
+      border-radius: 16px;
+      box-shadow: 0 0px 8px #00000033;
+    }
+
+    .controls {
+      min-height: 200px;
+      margin: 32px 0;
+      margin-left: -64px;
+      margin-right: 32px;
+
+      button {
+        all: unset;
+        margin-bottom: 16px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        icon {
+          color: $color_1;
+          font-size: 32px;
+        }
+      }
+    }
+
+    .right {
+      margin-left: 32px;
+
+      .text {
+        .title {
+          color: $color_9;
+          font-size: 24px;
+          font-weight: bold;
+        }
+
+        .artist {
+          color: $color_9;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

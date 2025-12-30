@@ -1,22 +1,32 @@
 import { Astal, Gtk, Gdk, astalify } from "astal/gtk3";
 import { timeout, Variable, bind } from "astal";
-import Wp from "gi://AstalWp";
+import { exec } from "astal/process";
+import { monitorFile } from "astal/file";
 
-const Volume = (monitor = 0) => {
+const Brightness = (monitor = 0) => {
   const { TOP, LEFT, RIGHT, BOTTOM, CENTER } = Astal.WindowAnchor;
-  const wp = Wp.get_default();
-  const speaker = wp.audio.default_speaker;
+
+  const bInterface = exec("sh -c 'ls -w1 /sys/class/backlight | head -1'");
+  const brightnessFile = `/sys/class/backlight/${bInterface}/brightness`;
+  const maxBrightness = Number(
+    exec(`cat /sys/class/backlight/${bInterface}/max_brightness`)
+  );
+  const brightness = Variable(
+    Number(exec("brightnessctl get")) / maxBrightness
+  );
+
   const isOpen = Variable(false);
 
   let timeout = setTimeout(() => {
     isOpen.set(false);
   }, 2000);
 
-  speaker.connect("notify", () => {
-    isOpen.set(true);
+  monitorFile(brightnessFile, () => {
+    brightness.set(Number(exec("brightnessctl get")) / maxBrightness);
 
     clearTimeout(timeout);
 
+    isOpen.set(true);
     timeout = setTimeout(() => {
       isOpen.set(false);
     }, 2000);
@@ -24,7 +34,7 @@ const Volume = (monitor = 0) => {
 
   return (
     <window
-      className="Volume"
+      className="Brightness"
       gdkmonitor={monitor}
       exclusivity={Astal.Exclusivity.NONE}
       anchor={CENTER}
@@ -35,8 +45,8 @@ const Volume = (monitor = 0) => {
         revealChild={bind(isOpen).as((open) => open)}
         className="revealer"
       >
-        <box className="volumeContainer">
-          <icon icon={bind(speaker, "volumeIcon")} />
+        <box className="brightnessContainer">
+          <icon icon="display-brightness-symbolic" />
           <slider
             widthRequest={200}
             hexpand
@@ -45,9 +55,10 @@ const Volume = (monitor = 0) => {
             cursor={"col-resize"}
             onDragged={(self) => {
               const value = self.value;
-              speaker.volume = value;
+              brightness.set(value * maxBrightness);
+              exec(`brightnessctl s ${value * maxBrightness}`);
             }}
-            value={bind(speaker, "volume")}
+            value={bind(brightness)}
           />
         </box>
       </revealer>
@@ -55,4 +66,4 @@ const Volume = (monitor = 0) => {
   );
 };
 
-export default Volume;
+export default Brightness;

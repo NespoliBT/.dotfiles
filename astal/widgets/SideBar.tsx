@@ -1,5 +1,6 @@
 import { Astal, Gtk, Gdk, astalify, App } from "astal/gtk3";
 import Title from "./Title";
+import MediaControl from "./MediaControl";
 import { Variable, bind } from "astal";
 import { exec, execAsync } from "astal/process";
 import { readFile, monitorFile } from "astal/file";
@@ -167,6 +168,7 @@ const SideBar = (monitor = 0) => {
             <box className="divider" />
             <NetworksEl />
             <box className="divider" />
+            <MediaControl />
           </box>
         </revealer>
       </eventbox>

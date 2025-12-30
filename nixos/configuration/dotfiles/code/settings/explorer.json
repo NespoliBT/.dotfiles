@@ -1,0 +1,6 @@
+{
+  "explorer.incrementalNaming": "smart",
+  "explorer.confirmDelete": false,
+
+  "scm.defaultViewMode": "tree"
+}

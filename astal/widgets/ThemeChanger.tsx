@@ -59,8 +59,10 @@ const getThemes = () => {
 const Themes = () => {
   const themes = getThemes();
   const pages = [];
+  const currentPage = Variable(0);
 
   const themePerPage = 3;
+  const lastScrollTime = Variable(0);
 
   for (let i = 0; i < themes.length; i += themePerPage) {
     pages.push(themes.slice(i, i + themePerPage));
@@ -70,48 +72,83 @@ const Themes = () => {
     <box className="themes" vertical={Gtk.Orientation.VERTICAL}>
       {pages.map((page, index) => {
         return (
-          <box
-            className="page"
-            halign={Gtk.Align.CENTER}
-            valign={Gtk.Align.CENTER}
+          <eventbox
+            vertical
+            valign={Gtk.Align.START}
+            onScroll={(_, e) => {
+              const now = Date.now();
+              if (now - lastScrollTime.get() < 300) return;
+              lastScrollTime.set(now);
+
+              if (e.delta_y > 0) {
+                const nextPage =
+                  currentPage.get() + 1 >= pages.length
+                    ? 0
+                    : currentPage.get() + 1;
+                currentPage.set(nextPage);
+              } else {
+                const prevPage =
+                  currentPage.get() - 1 < 0
+                    ? pages.length - 1
+                    : currentPage.get() - 1;
+                currentPage.set(prevPage);
+              }
+            }}
           >
-            {page.map((theme) => {
-              return (
-                <box className="theme" vertical={Gtk.Orientation.VERTICAL}>
-                  <button
-                    className="image"
-                    cursor={"pointer"}
-                    css={`
-                      background-image: url("${theme.background}");
-                    `}
-                    onClicked={() => {
-                      setTheme(theme);
-                    }}
-                  />
-                  <box
-                    className="colors"
-                    vertical={Gtk.Orientation.HORIZONTAL}
-                    halign={Gtk.Align.CENTER}
-                    valign={Gtk.Align.END}
-                    css={`
-                      background-color: ${theme.colors[0]};
-                    `}
-                  >
-                    {theme.colors.map((color, i) => {
-                      return i == 0 || i == 1 ? null : (
-                        <box
-                          className="color"
-                          css={`
-                            background-color: ${color};
-                          `}
-                        ></box>
-                      );
-                    })}
-                  </box>
-                </box>
-              );
-            })}
-          </box>
+            <revealer
+              transitionType={
+                index % 2 == 0
+                  ? Gtk.RevealerTransitionType.SLIDE_DOWN
+                  : Gtk.RevealerTransitionType.SLIDE_UP
+              }
+              revealChild={bind(currentPage).as((p) => p == index)}
+              className="revealer"
+              valign={Gtk.Align.START}
+            >
+              <box className="page" valign={Gtk.Align.START} vertical>
+                {page.map((theme) => {
+                  return (
+                    <box
+                      className="theme"
+                      vertical={Gtk.Orientation.VERTICAL}
+                      valign={Gtk.Align.START}
+                    >
+                      <button
+                        className="image"
+                        cursor={"pointer"}
+                        css={`
+                          background-image: url("${theme.background}");
+                        `}
+                        onClicked={() => {
+                          setTheme(theme);
+                        }}
+                      />
+                      <box
+                        className="colors"
+                        vertical={Gtk.Orientation.HORIZONTAL}
+                        halign={Gtk.Align.CENTER}
+                        valign={Gtk.Align.END}
+                        css={`
+                          background-color: ${theme.colors[0]};
+                        `}
+                      >
+                        {theme.colors.map((color, i) => {
+                          return i == 0 || i == 1 ? null : (
+                            <box
+                              className="color"
+                              css={`
+                                background-color: ${color};
+                              `}
+                            ></box>
+                          );
+                        })}
+                      </box>
+                    </box>
+                  );
+                })}
+              </box>
+            </revealer>
+          </eventbox>
         );
       })}
     </box>
@@ -127,11 +164,9 @@ const ThemeChanger = (monitor = 0) => {
       className="ThemeChanger"
       gdkmonitor={monitor}
       exclusivity={Astal.Exclusivity.NONE}
-      anchor={TOP | LEFT | RIGHT}
+      anchor={LEFT | BOTTOM | TOP}
     >
       <eventbox
-        valign={Gtk.Align.START}
-        halign={Gtk.Align.CENTER}
         onHover={() => {
           isHover.set(true);
         }}
@@ -140,17 +175,17 @@ const ThemeChanger = (monitor = 0) => {
         }}
       >
         <revealer
-          transitionType={Gtk.RevealerTransitionType.SLIDE_UP}
+          transitionType={Gtk.RevealerTransitionType.SLIDE_RIGHT}
           revealChild={isHover(() => isHover.get())}
           className="revealer"
         >
           <box
-            valign={Gtk.Align.START}
-            halign={Gtk.Align.CENTER}
+            halign={Gtk.Align.START}
             vertical={Gtk.Orientation.VERTICAL}
             className="themeChanger"
+            widthRequest={200}
           >
-            <Title color={6} size={70}>
+            <Title color={6} size={50}>
               Scegli responsabilmente
             </Title>
             <Themes />

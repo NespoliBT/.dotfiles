@@ -6,6 +6,7 @@ import SideBar from "./widgets/SideBar";
 import Notification from "./widgets/Notification";
 import AppsWindow from "./widgets/Apps";
 import Volume from "./widgets/Volume";
+import Brightness from "./widgets/Brightness";
 
 import style from "./scss/main.scss";
 
@@ -53,9 +54,10 @@ App.start({
       SideBar(monitor);
       ThemeChanger(monitor);
       Bar(monitor);
-      AppsWindow(monitor);
       Volume(monitor);
+      Brightness(monitor);
     });
+    AppsWindow();
     Notification(monitors[0]);
   },
 });

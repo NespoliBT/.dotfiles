@@ -1,0 +1,14 @@
+{
+  "window.titleBarStyle": "custom",
+  "window.zoomLevel": 2,
+  "cSpell.language": "en, it-IT",
+
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.factorypath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/node_modules/": true,
+    "**/__pycache__": true
+  }
+}

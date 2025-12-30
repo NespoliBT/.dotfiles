@@ -1,0 +1,23 @@
+{
+  "editor.formatOnType": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.fontSize": 15,
+  "editor.fontWeight": "500",
+  "editor.fontLigatures": true,
+  "editor.largeFileOptimizations": true,
+  "editor.letterSpacing": 0,
+  "editor.lineHeight": 40,
+  "editor.semanticHighlighting.enabled": true,
+  "editor.cursorBlinking": "expand",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.cursorSurroundingLines": 10,
+  "editor.smoothScrolling": true,
+  "editor.linkedEditing": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.suggestSelection": "first",
+  "editor.suggest.showMethods": true,
+  "editor.suggest.preview": true,
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.snippetSuggestions": "top"
+}

@@ -1,6 +1,6 @@
 import { Astal, Gtk, Gdk, astalify } from "astal/gtk3";
 
-const Title = ({ color, size, child }: Props) => {
+const Title = ({ color, size, maxWidth, child }: Props) => {
   return (
     <label
       className={`color_${color} titleEl`}
@@ -9,6 +9,8 @@ const Title = ({ color, size, child }: Props) => {
       `}
       valign={Gtk.Align.START}
       halign={Gtk.Align.CENTER}
+      maxWidthChars={maxWidth}
+      wrap
     >
       {child}
     </label>
