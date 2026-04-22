@@ -1,7 +1,8 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   imports = [
     ./dotfiles/hyprland.nix
-    ./dotfiles/zsh.nix
+    # ./dotfiles/zsh.nix
     ./dotfiles/gtk.nix
     ./dotfiles/vim.nix
     ./dotfiles/code/vscodium.nix
@@ -19,7 +20,7 @@
     alacritty
     firefox
     rofi
-    nixfmt-classic
+    nixfmt
     pavucontrol
     eza
     bat
@@ -37,6 +38,5 @@
     jdk
     obsidian
     sunsetr
-    astal.io
   ];
 }

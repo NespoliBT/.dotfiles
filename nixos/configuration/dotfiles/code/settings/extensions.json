@@ -9,5 +9,7 @@
     "yaml": true,
     "php": true,
     "lua": true
-  }
+  },
+  "qt-qml.qmlls.useQmlImportPathEnvVar": true,
+  "chat.extensionUnification.enabled": false
 }

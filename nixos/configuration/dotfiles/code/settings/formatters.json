@@ -46,5 +46,8 @@
   },
   "[blade]": {
     "editor.defaultFormatter": "onecentlin.laravel-blade"
+  },
+  "[qml]": {
+    "editor.defaultFormatter": "Delgan.qml-format"
   }
 }

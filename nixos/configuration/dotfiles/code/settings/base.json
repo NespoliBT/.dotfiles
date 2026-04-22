@@ -2,6 +2,7 @@
   "window.titleBarStyle": "custom",
   "window.zoomLevel": 2,
   "cSpell.language": "en, it-IT",
+  "git.autofetch": true,
 
   "files.exclude": {
     "**/.classpath": true,

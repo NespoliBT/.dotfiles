@@ -1,12 +1,15 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   imports = [
     ./fonts.nix
     ./pipewire.nix
     ./hyprland.nix
-    ./zsh.nix
+    # ./zsh.nix
+    ./fish.nix
     ./flatpak.nix
     ./bluetooth.nix
     ./share.nix
+    ./syncthing.nix
     # --
   ];
 

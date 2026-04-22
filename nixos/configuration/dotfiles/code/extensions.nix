@@ -15,8 +15,8 @@ with pkgs.vscode-extensions; [
   dbaeumer.vscode-eslint
   docker.docker
   eamodio.gitlens
-  meganrogge.template-string-converter
   github.copilot
+  meganrogge.template-string-converter
   ms-vscode-remote.remote-containers
   ms-vscode-remote.remote-ssh
   ms-vscode-remote.remote-ssh-edit
@@ -25,4 +25,5 @@ with pkgs.vscode-extensions; [
   svelte.svelte-vscode
   ms-python.python
   bmewburn.vscode-intelephense-client
+  #theqtcompany.qt-qml
 ]
