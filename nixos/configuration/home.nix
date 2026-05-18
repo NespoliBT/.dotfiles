@@ -1,12 +1,20 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  caelestia-shell,
+  ...
+}:
 {
   imports = [
     ./dotfiles/hyprland.nix
     # ./dotfiles/zsh.nix
     ./dotfiles/gtk.nix
+    ./dotfiles/caelestia.nix
     ./dotfiles/vim.nix
     ./dotfiles/git.nix
+    ./dotfiles/alacritty.nix
     ./dotfiles/code/vscodium.nix
+    caelestia-shell.homeManagerModules.default
     # --
   ];
 
@@ -38,5 +46,10 @@
     pkgs.jdk
     pkgs.obsidian
     pkgs.sunsetr
+    pkgs.quickshell
+    pkgs.github-copilot-cli
+    pkgs.remmina
+    pkgs.freerdp
+    caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.with-cli
   ];
 }

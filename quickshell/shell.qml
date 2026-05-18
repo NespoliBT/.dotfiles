@@ -1,6 +1,9 @@
 import Quickshell
-import "widgets"
+import "modules/bar"
 
-Scope {
-  Bar {}
+ShellRoot {
+  settings.watchFiles: true
+
+  Bar{}
+
 }

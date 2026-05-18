@@ -15,6 +15,7 @@
     ./bluetooth.nix
     ./share.nix
     ./syncthing.nix
+    ./fingerprint.nix
     # --
   ];
 

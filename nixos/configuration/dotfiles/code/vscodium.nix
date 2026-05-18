@@ -4,8 +4,9 @@ let
   userSettings = import ./userSettings.nix { lib = lib; };
   vscodeExtensions = import ./extensions.nix { pkgs = pkgs; };
   keybindings = ./settings/keybindings.json;
-in {
-  programs.vscode = {
+in
+{
+  programs.vscodium = {
     enable = true;
     package = pkgs.vscodium.fhs;
 

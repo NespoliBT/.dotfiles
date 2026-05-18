@@ -8,13 +8,29 @@
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    caelestia-shell = {
+      url = "github:caelestia-dots/shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, flake-utils, quickshell }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let pkgs = import nixpkgs { inherit system; };
-      in {
+  outputs =
+    {
+      self,
+      nixpkgs,
+      flake-utils,
+      quickshell,
+    }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = import nixpkgs { inherit system; };
+      in
+      {
         devShells.default = pkgs.mkShell {
+          packages = [
+            pkgs.kdePackages.qtdeclarative
+          ];
           buildInputs = [ quickshell.packages.${system}.default ];
           shellHook = "";
         };
@@ -26,5 +42,6 @@
             quickshell --path "$PWD"
           '';
         };
-      });
+      }
+    );
 }

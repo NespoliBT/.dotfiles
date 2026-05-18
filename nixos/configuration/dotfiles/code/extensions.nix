@@ -1,6 +1,22 @@
 { pkgs }:
 
-with pkgs.vscode-extensions; [
+let
+  caelestiaExt = pkgs.stdenv.mkDerivation {
+    name = "caelestia-vscode-integration";
+    src = ../../dotfiles/code/extensions/caelestia-vscode-integration;
+    version = "1.2.0";
+    vscodeExtPublisher = "soramanew";
+    vscodeExtName = "caelestia-vscode-integration";
+    vscodeExtUniqueId = "soramanew.caelestia-vscode-integration";
+    installPhase = ''
+      mkdir -p $out/share/vscode/extensions/$vscodeExtUniqueId
+      cp -r extension/* $out/share/vscode/extensions/$vscodeExtUniqueId/
+      cp "[Content_Types].xml" extension.vsixmanifest $out/share/vscode/extensions/$vscodeExtUniqueId/ 2>/dev/null || true
+    '';
+  };
+
+in
+(with pkgs.vscode-extensions; [
   # themes
   catppuccin.catppuccin-vsc
   catppuccin.catppuccin-vsc-icons
@@ -26,4 +42,8 @@ with pkgs.vscode-extensions; [
   ms-python.python
   bmewburn.vscode-intelephense-client
   #theqtcompany.qt-qml
+  
+])
+++ [
+  caelestiaExt
 ]

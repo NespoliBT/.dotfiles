@@ -11,19 +11,30 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
-    let system = "x86_64-linux";
-    in {
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }@inputs:
+    {
       nixosConfigurations.nespoli = nixpkgs.lib.nixosSystem {
-        inherit system;
+        system = "x86_64-linux";
         modules = [
           ./configuration/system.nix
           ./modules/default.nix
           home-manager.nixosModules.home-manager
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.nespoli = import ./configuration/home.nix;
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              # Pass the caelestia-shell input to home-manager
+              extraSpecialArgs = {
+                inherit (inputs) caelestia-shell;
+              };
+              users.nespoli = import ./configuration/home.nix;
+            };
           }
         ];
       };
