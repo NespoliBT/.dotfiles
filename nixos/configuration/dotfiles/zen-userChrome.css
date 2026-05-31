@@ -1,4 +1,4 @@
-/*:root {
+:root {
     --c-accent: var(--tab-loading-fill);
     --c-text: var(--toolbar-color);
     --c-mantle: var(--lwt-accent-color);
@@ -30,7 +30,7 @@
     --in-content-primary-button-text-color: var(--c-text) !important;
     --in-content-primary-button-background: var(--toolbarbutton-hover-background) !important;
     --in-content-primary-button-background-hover: var(--toolbarbutton-active-background) !important;
-}*/
+}
 
 /*tooltip {
     appearance: none !important;
