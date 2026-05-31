@@ -9,13 +9,6 @@
       url = "github:caelestia-dots/shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-      };
-    };
   };
 
   outputs =
@@ -38,7 +31,7 @@
               useUserPackages = true;
               # Pass the caelestia-shell input to home-manager
               extraSpecialArgs = {
-                inherit (inputs) caelestia-shell zen-browser;
+                inherit (inputs) caelestia-shell;
               };
               users.nespoli = import ./configuration/home.nix;
             };

@@ -13,7 +13,6 @@
     ./dotfiles/vim.nix
     ./dotfiles/git.nix
     ./dotfiles/alacritty.nix
-    ./dotfiles/zen.nix
     ./dotfiles/code/vscodium.nix
     caelestia-shell.homeManagerModules.default
     # --
