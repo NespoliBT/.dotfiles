@@ -13,6 +13,7 @@
     ./dotfiles/vim.nix
     ./dotfiles/git.nix
     ./dotfiles/alacritty.nix
+    ./dotfiles/zen.nix
     ./dotfiles/code/vscodium.nix
     caelestia-shell.homeManagerModules.default
     # --
@@ -22,6 +23,7 @@
   home.homeDirectory = "/home/nespoli";
 
   home.stateVersion = "26.05";
+  home.enableNixpkgsReleaseCheck = false;
 
   home.packages = [
     pkgs.brightnessctl
@@ -50,6 +52,8 @@
     pkgs.github-copilot-cli
     pkgs.remmina
     pkgs.freerdp
+    pkgs.nix-search
+    pkgs.pywalfox-native
     caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.with-cli
   ];
 }

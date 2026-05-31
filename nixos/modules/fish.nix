@@ -33,6 +33,8 @@ in
     set -gx EDITOR nvim
     set -gx PATH $HOME/.local/share/bin /usr/local/bin $PATH
 
+    /usr/bin/env cat .local/state/caelestia/sequences.txt
+
     # Start screen
     if test -d "./.git/"
       onefetch
