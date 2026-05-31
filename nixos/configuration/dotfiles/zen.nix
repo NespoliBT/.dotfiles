@@ -14,7 +14,7 @@ let
         printf '%b' "\\x$(printf '%02x' $(( (len >> 16) & 0xff)) )"
         printf '%b' "\\x$(printf '%02x' $(( (len >> 24) & 0xff)) )"
         printf '%s' "$msg"
-        log "sent ${len}B message"
+        log "sent ''${len}B message"
       }
 
       state_dir="''${XDG_STATE_HOME:-$HOME/.local/state}/caelestia"
