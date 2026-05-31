@@ -7,10 +7,10 @@ let
       message() {
         local msg="$1"
         local len=''${#msg}
-        printf "\\x$(printf '%02x' $((len & 0xff)))"
-        printf "\\x$(printf '%02x' $(( (len >> 8) & 0xff)) )"
-        printf "\\x$(printf '%02x' $(( (len >> 16) & 0xff)) )"
-        printf "\\x$(printf '%02x' $(( (len >> 24) & 0xff)) )"
+        printf '%b' "\\x$(printf '%02x' $((len & 0xff)))"
+        printf '%b' "\\x$(printf '%02x' $(( (len >> 8) & 0xff)) )"
+        printf '%b' "\\x$(printf '%02x' $(( (len >> 16) & 0xff)) )"
+        printf '%b' "\\x$(printf '%02x' $(( (len >> 24) & 0xff)) )"
         printf '%s' "$msg"
       }
 
@@ -19,7 +19,7 @@ let
 
       message "$(jq -c . "$scheme_path")"
 
-      inotifywait -q -e 'close_write,moved_to,create' -m "$state_dir" | while read -r dir events file; do
+      inotifywait -q -e 'close_write,moved_to,create' -m "$state_dir" | while read -r dir _ file; do
         if [ "''${dir}''${file}" = "$scheme_path" ]; then
           message "$(jq -c . "$scheme_path")"
         fi
