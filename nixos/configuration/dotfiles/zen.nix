@@ -1,27 +1,29 @@
 { config, pkgs, zen-browser, ... }:
 let
-  caelestiafox = pkgs.writeTextFile {
+  caelestiafox = pkgs.writeShellApplication {
     name = "caelestiafox";
-    executable = true;
-    destination = "/bin/caelestiafox";
+    runtimeInputs = [ pkgs.jq pkgs.inotify-tools ];
     text = ''
-      #!/usr/bin/env ${pkgs.fish}/bin/fish
+      message() {
+        local msg="$1"
+        local len=''${#msg}
+        printf "\\x$(printf '%02x' $((len & 0xff)))"
+        printf "\\x$(printf '%02x' $(( (len >> 8) & 0xff)) )"
+        printf "\\x$(printf '%02x' $(( (len >> 16) & 0xff)) )"
+        printf "\\x$(printf '%02x' $(( (len >> 24) & 0xff)) )"
+        printf '%s' "$msg"
+      }
 
-      function message -a msg
-        set -l x (printf '%08X' (string length -- $msg))
-        printf '%b' "\x$(string sub -s 7 -l 2 $x)\x$(string sub -s 5 -l 2 $x)\x$(string sub -s 3 -l 2 $x)\x$(string sub -s 1 -l 2 $x)"
-        printf '%s' $msg
-      end
+      state_dir="''${XDG_STATE_HOME:-$HOME/.local/state}/caelestia"
+      scheme_path="$state_dir/scheme.json"
 
-      set -q XDG_STATE_HOME && set -l state $XDG_STATE_HOME || set -l state $HOME/.local/state
-      set -l state_dir $state/caelestia
-      set -l scheme_path $state_dir/scheme.json
+      message "$(jq -c . "$scheme_path")"
 
-      message (${pkgs.jq}/bin/jq -c . $scheme_path)
-
-      ${pkgs.inotify-tools}/bin/inotifywait -q -e 'close_write,moved_to,create' -m $state_dir | while read dir events file
-        test "$dir$file" = $scheme_path && message (${pkgs.jq}/bin/jq -c . $scheme_path)
-      end
+      inotifywait -q -e 'close_write,moved_to,create' -m "$state_dir" | while read -r dir events file; do
+        if [ "''${dir}''${file}" = "$scheme_path" ]; then
+          message "$(jq -c . "$scheme_path")"
+        fi
+      done
     '';
   };
 in
