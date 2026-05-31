@@ -37,16 +37,6 @@ in
   programs.zen-browser = {
     enable = true;
     setAsDefaultBrowser = true;
-
-    profiles.default = {
-      isDefault = true;
-
-      userChrome = builtins.readFile ./zen-userChrome.css;
-
-      extraConfig = ''
-        user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
-      '';
-    };
   };
 
   home.file.".zen/c2mol9ml.Default Profile/chrome/userChrome.css".source = ./zen-userChrome.css;
