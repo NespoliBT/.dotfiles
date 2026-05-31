@@ -1,4 +1,4 @@
-{ config, pkgs, zen-browser, ... }:
+{ config, lib, pkgs, zen-browser, ... }:
 let
   caelestiafox = pkgs.writeShellApplication {
     name = "caelestiafox";
@@ -44,9 +44,14 @@ in
     setAsDefaultBrowser = true;
   };
 
-  home.file.".zen/c2mol9ml.Default Profile/chrome/userChrome.css".source = ./zen-userChrome.css;
-  home.file.".zen/c2mol9ml.Default Profile/user.js".text = ''
-    user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+  home.activation.zenChrome = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    for profile_dir in "$HOME"/.zen/*/; do
+      if [ -f "$profile_dir/prefs.js" ]; then
+        mkdir -p "$profile_dir/chrome"
+        ln -sf ${./zen-userChrome.css} "$profile_dir/chrome/userChrome.css"
+        echo 'user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);' > "$profile_dir/user.js"
+      fi
+    done
   '';
 
   home.file.".mozilla/native-messaging-hosts/caelestiafox.json".text = builtins.toJSON {
