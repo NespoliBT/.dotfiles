@@ -1,36 +1,11 @@
-:root {
-    --c-accent: var(--tab-loading-fill);
-    --c-text: var(--toolbar-color);
-    --c-mantle: var(--lwt-accent-color);
-    --c-base: var(--tabpanel-background-color);
-    --c-surface0: var(--tab-selected-bgcolor);
-    --c-surface1: var(--arrowpanel-border-color);
-
-    --zen-primary-color: var(--c-surface0) !important;
-    --zen-colors-primary: var(--c-accent) !important;
-    --zen-colors-secondary: var(--c-surface0) !important;
-    --zen-colors-tertiary: var(--c-base) !important;
-    --zen-colors-border: var(--c-surface1) !important;
-    --toolbarbutton-icon-fill: var(--c-accent) !important;
-    --toolbarbutton-icon-fill-attention: var(--c-accent) !important;
-    --toolbarbutton-icon-fill-attention-text-light: var(--c-text) !important;
-    --toolbarbutton-icon-fill-attention-text-dark: var(--c-base) !important;
-    --lwt-text-color: var(--c-text) !important;
-    --toolbar-field-color: color-mix(in srgb, var(--c-text), transparent 15%) !important;
-    --toolbar-field-focus-color: color-mix(in srgb, var(--c-text), transparent 10%) !important;
-    --arrowpanel-color: var(--c-text) !important;
-    --arrowpanel-background: var(--c-base) !important;
-    --lwt-sidebar-text-color: var(--c-text) !important;
-    --lwt-sidebar-background-color: var(--c-mantle) !important;
-    --toolbar-bgcolor: var(--c-surface0) !important;
-    --newtab-background-color: var(--c-base) !important;
-    --zen-themed-toolbar-bg: var(--c-mantle) !important;
-    --zen-main-browser-background: var(--c-mantle) !important;
-    --urlbarView-highlight-color: var(--c-text) !important;
-    --in-content-primary-button-text-color: var(--c-text) !important;
-    --in-content-primary-button-background: var(--toolbarbutton-hover-background) !important;
-    --in-content-primary-button-background-hover: var(--toolbarbutton-active-background) !important;
-}
+/* NOTE: Zen Browser ignores Firefox LWT (browser.theme.update()) for its primary color
+ * system. --zen-primary-color is set by ZenThemeModifier from the zen.theme.accent-color
+ * pref, not from LWT variables. Setting it here overrides Zen's own color with wrong
+ * values (--tab-selected-bgcolor is Zen-internal, not an LWT variable).
+ * Color integration is handled by writing zen.theme.accent-color to user.js. */
+/*:root {
+    ...
+}*/
 
 /*tooltip {
     appearance: none !important;

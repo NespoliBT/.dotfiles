@@ -20,13 +20,29 @@ let
       state_dir="''${XDG_STATE_HOME:-$HOME/.local/state}/caelestia"
       scheme_path="$state_dir/scheme.json"
 
+      write_zen_accent() {
+        local color
+        color="#$(jq -r '.colours.primary' "$scheme_path")"
+        for profile_dir in "$HOME"/.zen/*/ "$HOME"/.config/zen/*/; do
+          if [ -f "''${profile_dir}prefs.js" ]; then
+            {
+              printf 'user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);\n'
+              printf 'user_pref("zen.theme.accent-color", "%s");\n' "$color"
+            } > "''${profile_dir}user.js"
+            log "wrote zen.theme.accent-color=$color to ''${profile_dir}user.js"
+          fi
+        done
+      }
+
       log "started (HOME=$HOME, scheme=$scheme_path)"
       message "$(jq -c . "$scheme_path")"
+      write_zen_accent
       log "watching $state_dir"
 
       inotifywait -q -e 'close_write,moved_to,create' -m "$state_dir" | while read -r dir _ file; do
         if [ "''${dir}''${file}" = "$scheme_path" ]; then
           message "$(jq -c . "$scheme_path")"
+          write_zen_accent
         fi
       done
     '';
@@ -43,11 +59,22 @@ in
   };
 
   home.activation.zenChrome = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    scheme="''${XDG_STATE_HOME:-$HOME/.local/state}/caelestia/scheme.json"
+    accent=""
+    if [ -f "$scheme" ]; then
+      accent="#$(${pkgs.jq}/bin/jq -r '.colours.primary' "$scheme")"
+    fi
+
     for profile_dir in "$HOME"/.zen/*/ "$HOME"/.config/zen/*/; do
       if [ -f "$profile_dir/prefs.js" ]; then
         mkdir -p "$profile_dir/chrome"
         ln -sf ${./zen-userChrome.css} "$profile_dir/chrome/userChrome.css"
-        echo 'user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);' > "$profile_dir/user.js"
+        {
+          printf 'user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);\n'
+          if [ -n "$accent" ]; then
+            printf 'user_pref("zen.theme.accent-color", "%s");\n' "$accent"
+          fi
+        } > "$profile_dir/user.js"
       fi
     done
   '';
