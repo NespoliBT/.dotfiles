@@ -1,4 +1,4 @@
-{ config, lib, pkgs, zen-browser, ... }:
+{ lib, pkgs, zen-browser, ... }:
 let
   caelestiafox = pkgs.writeShellApplication {
     name = "caelestiafox";
@@ -33,15 +33,13 @@ let
   };
 in
 {
-  imports = [
-    zen-browser.homeModules.beta
-    # or zen-browser.homeModules.twilight
-    # or zen-browser.homeModules.twilight-official
-  ];
+  home.packages = [ zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.beta ];
 
-  programs.zen-browser = {
-    enable = true;
-    setAsDefaultBrowser = true;
+  xdg.mimeApps.defaultApplications = {
+    "text/html" = [ "zen.desktop" ];
+    "x-scheme-handler/http" = [ "zen.desktop" ];
+    "x-scheme-handler/https" = [ "zen.desktop" ];
+    "x-scheme-handler/about" = [ "zen.desktop" ];
   };
 
   home.activation.zenChrome = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
