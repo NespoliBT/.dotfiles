@@ -4,6 +4,8 @@ let
     name = "caelestiafox";
     runtimeInputs = [ pkgs.jq pkgs.inotify-tools ];
     text = ''
+      log() { echo "$(date -Iseconds) $*" >> "$HOME/.local/state/caelestia/caelestiafox.log"; }
+
       message() {
         local msg="$1"
         local len=''${#msg}
@@ -12,12 +14,15 @@ let
         printf '%b' "\\x$(printf '%02x' $(( (len >> 16) & 0xff)) )"
         printf '%b' "\\x$(printf '%02x' $(( (len >> 24) & 0xff)) )"
         printf '%s' "$msg"
+        log "sent ${len}B message"
       }
 
       state_dir="''${XDG_STATE_HOME:-$HOME/.local/state}/caelestia"
       scheme_path="$state_dir/scheme.json"
 
+      log "started (HOME=$HOME, scheme=$scheme_path)"
       message "$(jq -c . "$scheme_path")"
+      log "watching $state_dir"
 
       inotifywait -q -e 'close_write,moved_to,create' -m "$state_dir" | while read -r dir _ file; do
         if [ "''${dir}''${file}" = "$scheme_path" ]; then
