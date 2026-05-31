@@ -45,7 +45,7 @@ in
   };
 
   home.activation.zenChrome = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    for profile_dir in "$HOME"/.zen/*/; do
+    for profile_dir in "$HOME"/.zen/*/ "$HOME"/.config/zen/*/; do
       if [ -f "$profile_dir/prefs.js" ]; then
         mkdir -p "$profile_dir/chrome"
         ln -sf ${./zen-userChrome.css} "$profile_dir/chrome/userChrome.css"
