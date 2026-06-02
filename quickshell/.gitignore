@@ -1,0 +1,20 @@
+# QML Language Server config (auto-generated)
+.qmlls.ini
+
+# Build artifacts
+result/
+result-*
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Nix
+*.drv
+
+# OS files
+.DS_Store
+Thumbs.db
