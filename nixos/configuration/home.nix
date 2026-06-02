@@ -53,6 +53,8 @@
     pkgs.freerdp
     pkgs.nix-search
     pkgs.pywalfox-native
+    pkgs.claude-code
+    pkgs.nodejs
     caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.with-cli
   ];
 }
