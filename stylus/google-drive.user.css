@@ -1,0 +1,106 @@
+/* ==UserStyle==
+@name         Pywal - Google Drive
+@namespace    pywal-google-drive
+@version      1.0.0
+@description  Google Drive themed with pywalfox colors. Based on Google Drive Dark by Gravitonic.
+@match        https://drive.google.com/*
+==/UserStyle== */
+
+@-moz-document regexp("https?://drive\\.google\\.com/drive.*"),
+               regexp("https?://drive\\.google\\.com/.*") {
+  /* Override the Material 3 design tokens Google Drive uses */
+  .vhoiae.KkxPLb,
+  :root {
+    --dt-background:                    var(--wal-background) !important;
+    --dt-surface:                       var(--wal-color-8)    !important;
+    --dt-surface1:                      var(--wal-color-8)    !important;
+    --dt-surface2:                      var(--wal-color-8)    !important;
+    --dt-surface3:                      var(--wal-color-0)    !important;
+    --dt-surface-container-lowest:      var(--wal-color-0)    !important;
+    --dt-surface-container-low:         var(--wal-color-8)    !important;
+    --dt-surface-container:             var(--wal-color-8)    !important;
+    --dt-surface-container-high:        color-mix(in srgb, var(--wal-color-8) 80%, white) !important;
+    --dt-surface-container-highest:     color-mix(in srgb, var(--wal-color-8) 60%, white) !important;
+
+    --dt-on-background:                 var(--wal-foreground) !important;
+    --dt-on-surface:                    var(--wal-foreground) !important;
+    --dt-on-surface-variant:            var(--wal-color-6)    !important;
+
+    --dt-primary:                       var(--wal-color-2)    !important;
+    --dt-primary-action:                var(--wal-color-2)    !important;
+    --dt-secondary-action:              var(--wal-color-4)    !important;
+    --dt-on-primary:                    var(--wal-background) !important;
+
+    --dt-error:                         var(--wal-color-1)    !important;
+    --dt-tertiary:                      var(--wal-color-3)    !important;
+    --dt-warning:                       var(--wal-color-14)   !important;
+
+    --dt-outline:                       var(--wal-color-8)    !important;
+    --dt-outline-variant:               var(--wal-color-8)    !important;
+  }
+
+  /* Base page */
+  body, #drive-main-page, [role="main"] {
+    background-color: var(--wal-background) !important;
+    color: var(--wal-foreground) !important;
+  }
+
+  /* Top bar */
+  header, .Kd4Tqd, .wo {
+    background-color: var(--wal-color-0) !important;
+    color: var(--wal-foreground) !important;
+  }
+
+  /* Sidebar */
+  .WT1Ydb, nav, [role="navigation"] {
+    background-color: var(--wal-color-0) !important;
+    color: var(--wal-foreground) !important;
+  }
+
+  /* Active sidebar item */
+  .kXSNbe, .jKkGTb.i9wCWc {
+    background-color: color-mix(in srgb, var(--wal-color-2) 20%, transparent) !important;
+    color: var(--wal-color-2) !important;
+  }
+
+  /* File list / grid */
+  [data-target="doc"] .KF4T6b,
+  .rgH3xd, .b6AX6b {
+    background-color: var(--wal-color-8) !important;
+    color: var(--wal-foreground) !important;
+    border-color: var(--wal-color-8) !important;
+  }
+  [data-target="doc"] .KF4T6b:hover,
+  .rgH3xd:hover {
+    background-color: color-mix(in srgb, var(--wal-color-8) 80%, white) !important;
+  }
+
+  /* Toolbar buttons */
+  .U26fgb { color: var(--wal-foreground) !important; }
+  .U26fgb:hover { background-color: var(--wal-color-8) !important; }
+
+  /* New/Create button */
+  .E1K6ke, .a-k-m {
+    background-color: var(--wal-color-8) !important;
+    color: var(--wal-foreground) !important;
+  }
+  .E1K6ke:hover { background-color: color-mix(in srgb, var(--wal-color-8) 80%, white) !important; }
+
+  /* Dialogs / modals */
+  [role="dialog"], .LkDMRd, .a-c-F-Mc {
+    background-color: var(--wal-color-8) !important;
+    color: var(--wal-foreground) !important;
+  }
+
+  /* Search bar */
+  [role="search"], .Tj, .gb_Ae {
+    background-color: var(--wal-color-8) !important;
+    color: var(--wal-foreground) !important;
+  }
+
+  /* Borders / dividers */
+  .PJv3Cf, .Yb2h3b { border-color: var(--wal-color-8) !important; }
+
+  /* Links */
+  a { color: var(--wal-color-2) !important; }
+}

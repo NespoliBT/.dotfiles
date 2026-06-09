@@ -6,15 +6,14 @@
 }:
 {
   imports = [
-    ./dotfiles/hyprland.nix
-    # ./dotfiles/zsh.nix
-    ./dotfiles/gtk.nix
-    ./dotfiles/caelestia.nix
-    ./dotfiles/vim.nix
-    ./dotfiles/git.nix
-    ./dotfiles/alacritty.nix
-    ./dotfiles/code/vscodium.nix
-    ./dotfiles/pywal.nix
+    ./hyprland.nix
+    # ./zsh.nix
+    ./gtk.nix
+    ./caelestia.nix
+    ./vim.nix
+    ./git.nix
+    ./alacritty.nix
+    ./vscodium
     caelestia-shell.homeManagerModules.default
     # --
   ];
@@ -25,11 +24,10 @@
   home.stateVersion = "26.05";
   home.enableNixpkgsReleaseCheck = false;
 
-  programs.firefox.enable = true;
-
   home.packages = [
     pkgs.brightnessctl
     pkgs.alacritty
+    pkgs.firefox
     pkgs.rofi
     pkgs.nixfmt
     pkgs.pavucontrol
@@ -54,8 +52,9 @@
     pkgs.remmina
     pkgs.freerdp
     pkgs.nix-search
+    pkgs.pywalfox-native
+    pkgs.claude-code
     pkgs.nodejs
-    (pkgs.python3.withPackages (ps: [ ps.python-telegram-bot]))
     caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.with-cli
   ];
 }

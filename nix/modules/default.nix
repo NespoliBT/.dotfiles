@@ -17,7 +17,6 @@
     ./syncthing.nix
     ./fingerprint.nix
     ./hermes.nix
-    ./kdeconnect.nix
     # --
   ];
 

@@ -1,0 +1,102 @@
+/* ==UserStyle==
+@name         Pywal - Gmail
+@namespace    pywal-gmail
+@version      1.0.0
+@description  Gmail themed with pywalfox colors. Based on Gmail True Dark Mode.
+@match        https://mail.google.com/*
+==/UserStyle== */
+
+@-moz-document domain("mail.google.com") {
+  /* Base */
+  body, .nH { background-color: var(--wal-background) !important; color: var(--wal-foreground) !important; }
+
+  /* Navigation */
+  [role="navigation"] [role="button"],
+  [role="toolbar"] [role="button"] {
+    background-color: var(--wal-color-8) !important;
+    color: var(--wal-foreground) !important;
+  }
+  /* Sidebar nav */
+  .aeN, .TO { background-color: var(--wal-color-0) !important; }
+  .TK .nZ, .aim .aio > .V6 { color: var(--wal-foreground) !important; }
+  .aim .aio.bq1 > .V6 {
+    background-color: color-mix(in srgb, var(--wal-color-2) 20%, transparent) !important;
+    color: var(--wal-color-2) !important;
+    border-radius: 16px;
+  }
+
+  /* Dropdowns / menus */
+  .J-M, .ajA, [role="menuitemcheckbox"],
+  .bAp.b8.UC .vh {
+    background-color: var(--wal-color-8) !important;
+    color: var(--wal-foreground) !important;
+  }
+
+  /* Search */
+  form[role="search"], .gb_Ae, .gb_af {
+    background-color: var(--wal-color-8) !important;
+    color: var(--wal-foreground) !important;
+  }
+
+  /* Toolbar icons - invert to match dark theme */
+  [role="toolbar"] [role="button"] img,
+  .G-Ni img, .nH .G-Ni img {
+    filter: invert(80%) hue-rotate(180deg);
+  }
+
+  /* Email list rows */
+  .zA {
+    background-color: var(--wal-background) !important;
+    color: var(--wal-foreground) !important;
+  }
+  .zA:hover, tr.aRp:hover {
+    background-color: var(--wal-color-8) !important;
+  }
+  /* Unread rows */
+  .zA.zE { background-color: color-mix(in srgb, var(--wal-color-8) 60%, var(--wal-background)) !important; }
+  .zA .y6, .zA .bog, .zA .bqe { color: var(--wal-foreground) !important; }
+
+  /* Reading pane */
+  .gs, .ii.gt, .a3s, .h7, .adP, .adn {
+    background-color: var(--wal-background) !important;
+    color: var(--wal-foreground) !important;
+  }
+  /* Message content reset (emails often have white bg) */
+  .gt div, .gt table, .gt td, .gt span, .gt p,
+  .gt h1, .gt h2, .gt h3, .gt h4, .gt a {
+    background-color: transparent !important;
+    color: var(--wal-foreground) !important;
+  }
+  .gt a { color: var(--wal-color-2) !important; }
+
+  /* Thread / conversation view */
+  .nH.ar4.z, .nH.aHU, .nH.nn { background-color: var(--wal-background) !important; }
+  .hx { color: var(--wal-foreground) !important; }
+
+  /* Compose button */
+  .T-I.T-I-KE, .T-I.J-J5-Ji.T-I-KE {
+    background-color: var(--wal-color-2) !important;
+    color: var(--wal-background) !important;
+    box-shadow: none !important;
+  }
+
+  /* Generic buttons */
+  .T-I {
+    background-color: var(--wal-color-8) !important;
+    color: var(--wal-foreground) !important;
+    border-color: var(--wal-color-8) !important;
+  }
+  .T-I:hover { background-color: color-mix(in srgb, var(--wal-color-8) 80%, white) !important; }
+
+  /* Spam / danger button */
+  .bqX { background-color: var(--wal-color-1) !important; color: var(--wal-background) !important; }
+
+  /* Borders and dividers */
+  .nH, .bq9, .aKS, .UI, .HM .I5 { border-color: var(--wal-color-8) !important; }
+
+  /* Links */
+  a { color: var(--wal-color-2) !important; }
+
+  /* Gmail logo */
+  .gb_Bc { filter: grayscale(0.15); }
+}

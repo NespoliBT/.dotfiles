@@ -1,0 +1,100 @@
+/* ==UserStyle==
+@name         Pywal - DeepSeek
+@namespace    pywal-deepseek
+@version      1.0.0
+@description  DeepSeek Chat themed with pywalfox colors
+@match        https://chat.deepseek.com/*
+==/UserStyle== */
+
+@-moz-document domain("deepseek.com") {
+  :root {
+    color-scheme: dark;
+    /* DeepSeek CSS variables */
+    --ds-bg-1:           var(--wal-color-0)    !important;
+    --ds-bg-2:           var(--wal-background) !important;
+    --ds-bg-3:           var(--wal-color-8)    !important;
+    --ds-text-primary:   var(--wal-foreground) !important;
+    --ds-text-secondary: var(--wal-color-6)    !important;
+    --ds-text-tertiary:  var(--wal-color-5)    !important;
+    --ds-main-color:     var(--wal-color-2)    !important;
+    --ds-border-color:   var(--wal-color-8)    !important;
+  }
+
+  /* Base */
+  body, #app { background-color: var(--wal-background) !important; color: var(--wal-foreground) !important; }
+
+  /* Sidebar */
+  ._7436101, [class*="sidebar"], [class*="Sidebar"] {
+    background-color: var(--wal-color-0) !important;
+    border-color: var(--wal-color-8) !important;
+    color: var(--wal-foreground) !important;
+  }
+
+  /* Chat area */
+  ._7436102, [class*="chat"], [class*="Chat"],
+  [class*="main"], [class*="Main"] {
+    background-color: var(--wal-background) !important;
+  }
+
+  /* Message bubbles */
+  [class*="message"], [class*="Message"],
+  [class*="bubble"], [class*="Bubble"] {
+    background-color: var(--wal-color-8) !important;
+    color: var(--wal-foreground) !important;
+    border-color: var(--wal-color-8) !important;
+  }
+
+  /* User message */
+  [class*="userMessage"], [class*="human"],
+  [class*="user-message"] {
+    background-color: color-mix(in srgb, var(--wal-color-2) 15%, var(--wal-color-8)) !important;
+  }
+
+  /* Input area */
+  [class*="inputArea"], [class*="input-area"],
+  [class*="chatInput"], [class*="chat-input"] {
+    background-color: var(--wal-color-0) !important;
+    border-color: var(--wal-color-8) !important;
+  }
+  textarea, [role="textbox"] {
+    background-color: var(--wal-color-8) !important;
+    color: var(--wal-foreground) !important;
+    border-color: var(--wal-color-8) !important;
+  }
+  textarea:focus, [role="textbox"]:focus {
+    border-color: var(--wal-color-2) !important;
+    outline-color: var(--wal-color-2) !important;
+  }
+
+  /* Send button */
+  [class*="sendBtn"], [class*="send-btn"],
+  button[type="submit"] {
+    background-color: var(--wal-color-2) !important;
+    color: var(--wal-background) !important;
+    border: none !important;
+  }
+
+  /* Sidebar items / history */
+  [class*="historyItem"], [class*="history-item"],
+  [class*="chatItem"], [class*="chat-item"] {
+    color: var(--wal-foreground) !important;
+    border-color: var(--wal-color-8) !important;
+  }
+  [class*="historyItem"]:hover, [class*="chat-item"]:hover {
+    background-color: var(--wal-color-8) !important;
+  }
+
+  /* Code blocks */
+  pre, code, [class*="codeBlock"], [class*="code-block"] {
+    background-color: var(--wal-color-0) !important;
+    color: var(--wal-foreground) !important;
+    border-color: var(--wal-color-8) !important;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { background-color: var(--wal-color-0) !important; }
+  ::-webkit-scrollbar-thumb { background-color: var(--wal-color-8) !important; border-radius: 4px; }
+
+  /* Links */
+  a { color: var(--wal-color-2) !important; }
+}

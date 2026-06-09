@@ -14,16 +14,16 @@
 
   outputs =
     {
-        self,
-        nixpkgs,
-        home-manager,
-        ...
+      self,
+      nixpkgs,
+      home-manager,
+      ...
     }@inputs:
     {
       nixosConfigurations.nespoli = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./configuration/system.nix
+          ./hosts/nespoli
           ./modules/default.nix
           home-manager.nixosModules.home-manager
           inputs.hermes-agent.nixosModules.default
@@ -31,11 +31,10 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              # Pass the caelestia-shell input to home-manager
               extraSpecialArgs = {
                 inherit (inputs) caelestia-shell;
               };
-              users.nespoli = import ./configuration/home.nix;
+              users.nespoli = import ./home/default.nix;
             };
           }
         ];

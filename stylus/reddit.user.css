@@ -1,0 +1,131 @@
+/* ==UserStyle==
+@name         Pywal - Reddit
+@namespace    pywal-reddit
+@version      1.0.0
+@description  Old Reddit themed with pywalfox colors. Based on Reddit Minimal Dark by Isaiah Billingsley.
+@match        https://old.reddit.com/*
+@match        https://www.reddit.com/*
+==/UserStyle== */
+
+@-moz-document domain("reddit.com") {
+  :root {
+    --rmd-text:                var(--wal-foreground);
+    --rmd-text-light:          var(--wal-color-7);
+    --rmd-text-dark:           var(--wal-color-6);
+    --rmd-background:          var(--wal-background);
+    --rmd-background-light:    var(--wal-color-8);
+    --rmd-background-dark:     var(--wal-color-0);
+    --rmd-border:              var(--wal-color-8);
+    --rmd-link:                var(--wal-color-2);
+    --rmd-link-visited:        var(--wal-color-5);
+    --rmd-link-hover:          var(--wal-color-10);
+    --rmd-title:               var(--wal-foreground);
+    --rmd-title-visited:       var(--wal-color-6);
+    --rmd-title-hover:         var(--wal-color-15);
+    --rmd-post-actions:        var(--wal-color-5);
+    --rmd-post-actions-visited:var(--wal-color-6);
+    --rmd-post-actions-hover:  var(--wal-color-7);
+    --rmd-button-text-light:   var(--wal-background);
+    --rmd-button-background:   var(--wal-color-8);
+    --rmd-button-border:       var(--wal-color-8);
+    --rmd-code-background:     var(--wal-color-0);
+    --rmd-flair:               var(--wal-color-5);
+    --rmd-flair-border:        var(--wal-color-8);
+    --rmd-upvote:              var(--wal-color-2);
+    --rmd-downvote:            var(--wal-color-1);
+    --rmd-friend:              var(--wal-color-3);
+    --rmd-submitter:           var(--wal-color-4);
+    --rmd-mod:                 var(--wal-color-3);
+    --rmd-admin:               var(--wal-color-1);
+    --rmd-nsfw:                var(--wal-color-1);
+    --rmd-nsfw-border:         var(--wal-color-9);
+    --rmd-gold:                var(--wal-color-14);
+  }
+
+  /* Hide ads */
+  #redesign-beta-optin-btn, .redesign-beta-optin, .give-gold-button,
+  .goldvertisement, .premium-banner-outer, .premium-banner,
+  .promotedlink, .promoted-tag, .listingsignupbar, .onboardingbar,
+  .embed-comment, .nub { display: none !important; }
+
+  /* Reset */
+  * { background-color: transparent; border-color: var(--rmd-border); color: var(--rmd-text); }
+  html, body { color-scheme: dark; background-color: var(--rmd-background) !important; }
+  a, a * { color: var(--rmd-link) !important; }
+  a:visited, a:visited * { color: var(--rmd-link-visited) !important; }
+  a:hover, a:hover * { color: var(--rmd-link-hover) !important; }
+
+  /* Top bar */
+  #header * { background-color: transparent; border: none; }
+  #header, #sr-more-link { background-color: var(--rmd-background-dark) !important; border: none; }
+  #header-img, #mail, #notifications, #chat, #chat-v2,
+  .sidebox.create .spacer a, .users-online:before, .c-close {
+    filter: invert(80%) hue-rotate(180deg) !important;
+  }
+  .tabmenu a { background-color: transparent !important; border-color: var(--rmd-border) !important; }
+  .tabmenu .selected a { background-color: var(--rmd-background-light) !important; color: var(--rmd-text-light) !important; }
+
+  /* Sidebar */
+  .side, .side *, .listing-chooser, .listing-chooser * {
+    background-color: transparent !important; border-color: var(--rmd-border) !important; color: var(--rmd-text-dark);
+  }
+  .listing-chooser li.selected { background-color: var(--rmd-background-light) !important; box-shadow: none !important; }
+
+  /* Inputs and buttons */
+  input, textarea, .linkinfo .shortlink input, .morelink a, .morelink:hover a,
+  .nav-buttons a, .fancy-toggle-button a, .usertext button, .image-upload-drop-target {
+    background: var(--rmd-button-background) !important;
+    border-color: var(--rmd-button-border);
+    color: var(--rmd-text-light) !important;
+    font-weight: normal !important;
+  }
+  .drop-choices, .hover-bubble, .modal-dialog { background: var(--rmd-background-dark) !important; }
+  .drop-choices a:hover { background: var(--rmd-button-background) !important; }
+  .hover-bubble:after { filter: invert(1); }
+  .roundfield, .linefield { background-color: var(--rmd-background-dark) !important; }
+
+  /* Listing */
+  .thing .title { color: var(--rmd-title) !important; }
+  .title:visited { color: var(--rmd-title-visited) !important; }
+  .thing .title:hover { color: var(--rmd-title-hover) !important; }
+  .arrow { filter: brightness(45%); }
+  .arrow.upmod, .arrow.downmod { filter: brightness(50%) contrast(120%); }
+  .rank, .score { color: var(--rmd-text-dark) !important; }
+  .link .score.likes { color: var(--rmd-upvote) !important; }
+  .link .score.dislikes { color: var(--rmd-downvote) !important; }
+  .expando-button, .thumbnail:empty { filter: brightness(50%) contrast(250%); background-color: transparent !important; }
+  .friend, .friend:visited { color: var(--rmd-friend) !important; }
+  .submitter, .submitter:visited { color: var(--rmd-submitter) !important; }
+  .moderator, .moderator:visited, .green { color: var(--rmd-mod) !important; }
+  .admin, .admin:visited { color: var(--rmd-admin) !important; }
+  .nsfw-stamp * { color: var(--rmd-nsfw) !important; }
+  .nsfw-stamp { border-color: var(--rmd-nsfw-border) !important; }
+  .buttons a { color: var(--rmd-post-actions) !important; }
+  .buttons a:visited { color: var(--rmd-post-actions-visited) !important; }
+  .buttons a:hover { color: var(--rmd-post-actions-hover) !important; }
+  .flair, .flairrichtext, .linkflairlabel {
+    background-color: transparent !important; border-color: var(--rmd-flair-border);
+    color: var(--rmd-flair); font-size: x-small;
+  }
+
+  /* Comments */
+  .panestack-title, .child, .author-tooltip { border-color: var(--rmd-border) !important; }
+  .author-tooltip__head, .pinnable-content.pinned, .crosspost-preview-content,
+  .link .usertext .md, .form-bar, blockquote, pre, code {
+    background-color: var(--rmd-background-dark) !important; border: none !important;
+  }
+  .link .usertext .md pre, .link .usertext .md code { background-color: var(--rmd-code-background) !important; }
+  .md blockquote { border-left: solid 4px var(--rmd-border) !important; }
+  .md blockquote * { color: var(--rmd-text-dark); }
+  .md td, .md th { border: solid 1px var(--rmd-border) !important; }
+  hr { background-color: transparent !important; border: solid var(--rmd-border) !important; border-width: 0 0 1px 0 !important; }
+  .new-comment .usertext-body, .usertext.border .usertext-body,
+  .message.new > .entry, .crosspost-preview, .infobar {
+    background-color: var(--rmd-background-light) !important; border: none;
+  }
+}
+
+@-moz-document domain("redditmedia.com") {
+  body { background: var(--wal-color-0); }
+  body > iframe { width: 100vw; height: 100vh; }
+}

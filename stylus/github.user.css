@@ -1,0 +1,111 @@
+/* ==UserStyle==
+@name         Pywal - GitHub
+@namespace    pywal-github
+@version      1.0.0
+@description  GitHub themed with pywalfox colors. Based on Dark-GitHub by vednoc.
+@match        https://github.com/*
+==/UserStyle== */
+
+@-moz-document domain("github.com") {
+  :root:not(#z) {
+    color-scheme: dark;
+
+    /* Canvas / backgrounds */
+    --color-canvas-default:                    var(--wal-background)  !important;
+    --color-canvas-overlay:                    var(--wal-color-8)     !important;
+    --color-canvas-inset:                      var(--wal-color-0)     !important;
+    --color-canvas-subtle:                     var(--wal-color-8)     !important;
+
+    /* Foregrounds / text */
+    --color-fg-default:                        var(--wal-foreground)  !important;
+    --color-fg-muted:                          var(--wal-color-6)     !important;
+    --color-fg-subtle:                         var(--wal-color-5)     !important;
+    --color-fg-on-emphasis:                    var(--wal-background)  !important;
+
+    /* Borders */
+    --color-border-default:                    var(--wal-color-8)     !important;
+    --color-border-muted:                      var(--wal-color-8)     !important;
+    --color-border-subtle:                     var(--wal-color-8)     !important;
+
+    /* Accent / links */
+    --color-accent-fg:                         var(--wal-color-2)     !important;
+    --color-accent-emphasis:                   var(--wal-color-2)     !important;
+    --color-accent-muted:                      color-mix(in srgb, var(--wal-color-2) 25%, transparent) !important;
+    --color-accent-subtle:                     color-mix(in srgb, var(--wal-color-2) 10%, transparent) !important;
+
+    /* Header */
+    --color-header-bg:                         var(--wal-color-0)     !important;
+    --color-header-divider:                    var(--wal-color-8)     !important;
+    --color-header-logo:                       var(--wal-foreground)  !important;
+    --color-header-text:                       var(--wal-foreground)  !important;
+    --color-header-search-bg:                  var(--wal-color-8)     !important;
+    --color-header-search-border:              var(--wal-color-8)     !important;
+
+    /* Buttons */
+    --color-btn-bg:                            var(--wal-color-8)     !important;
+    --color-btn-border:                        var(--wal-color-8)     !important;
+    --color-btn-text:                          var(--wal-foreground)  !important;
+    --color-btn-hover-bg:                      color-mix(in srgb, var(--wal-color-8) 80%, white) !important;
+    --color-btn-primary-bg:                    var(--wal-color-2)     !important;
+    --color-btn-primary-border:                var(--wal-color-2)     !important;
+    --color-btn-primary-text:                  var(--wal-background)  !important;
+
+    /* Inputs */
+    --color-input-bg:                          var(--wal-color-8)     !important;
+    --color-input-border:                      var(--wal-color-8)     !important;
+    --color-input-contrast:                    var(--wal-color-0)     !important;
+    --color-input-disabled-bg:                 var(--wal-color-8)     !important;
+
+    /* Neutral */
+    --color-neutral-muted:                     color-mix(in srgb, var(--wal-color-8) 50%, transparent) !important;
+    --color-neutral-emphasis:                  var(--wal-color-8)     !important;
+    --color-neutral-emphasis-plus:             var(--wal-color-5)     !important;
+
+    /* Semantic */
+    --color-success-fg:                        var(--wal-color-3)     !important;
+    --color-success-emphasis:                  var(--wal-color-3)     !important;
+    --color-success-muted:                     color-mix(in srgb, var(--wal-color-3) 20%, transparent) !important;
+    --color-success-subtle:                    color-mix(in srgb, var(--wal-color-3) 10%, transparent) !important;
+    --color-danger-fg:                         var(--wal-color-1)     !important;
+    --color-danger-emphasis:                   var(--wal-color-1)     !important;
+    --color-danger-muted:                      color-mix(in srgb, var(--wal-color-1) 20%, transparent) !important;
+    --color-danger-subtle:                     color-mix(in srgb, var(--wal-color-1) 10%, transparent) !important;
+    --color-attention-fg:                      var(--wal-color-14)    !important;
+    --color-attention-emphasis:                var(--wal-color-14)    !important;
+    --color-attention-muted:                   color-mix(in srgb, var(--wal-color-14) 20%, transparent) !important;
+    --color-attention-subtle:                  color-mix(in srgb, var(--wal-color-14) 10%, transparent) !important;
+    --color-done-fg:                           var(--wal-color-4)     !important;
+    --color-done-muted:                        color-mix(in srgb, var(--wal-color-4) 20%, transparent) !important;
+
+    /* Diffs */
+    --color-diffBlob-addition-bgColor-line:    color-mix(in srgb, var(--wal-color-3) 15%, transparent) !important;
+    --color-diffBlob-addition-bgColor-word:    color-mix(in srgb, var(--wal-color-3) 30%, transparent) !important;
+    --color-diffBlob-deletion-bgColor-line:    color-mix(in srgb, var(--wal-color-1) 15%, transparent) !important;
+    --color-diffBlob-deletion-bgColor-word:    color-mix(in srgb, var(--wal-color-1) 30%, transparent) !important;
+
+    /* Shadows */
+    --color-shadow-small:   0 1px 0 color-mix(in srgb, var(--wal-color-0) 80%, transparent) !important;
+    --color-shadow-medium:  0 3px 6px color-mix(in srgb, var(--wal-color-0) 80%, transparent) !important;
+    --color-shadow-large:   0 8px 24px color-mix(in srgb, var(--wal-color-0) 80%, transparent) !important;
+
+    /* Newer bgColor/fgColor/borderColor variable names */
+    --bgColor-default:      var(--wal-background) !important;
+    --bgColor-muted:        var(--wal-color-8)    !important;
+    --bgColor-emphasis:     var(--wal-color-8)    !important;
+    --bgColor-inset:        var(--wal-color-0)    !important;
+    --fgColor-default:      var(--wal-foreground) !important;
+    --fgColor-muted:        var(--wal-color-6)    !important;
+    --borderColor-default:  var(--wal-color-8)    !important;
+    --borderColor-muted:    var(--wal-color-8)    !important;
+  }
+
+  /* Fix nav + boxes */
+  .Box, .Box-row { background-color: var(--wal-background) !important; }
+  .Box-header { background-color: var(--wal-color-8) !important; }
+  .markdown-body { color: var(--wal-foreground) !important; }
+  .markdown-body pre, .markdown-body code { background-color: var(--wal-color-0) !important; }
+
+  /* Diff table rows */
+  table.diff-table > tbody > tr,
+  table.highlight > tbody > tr { background-color: transparent !important; }
+}
